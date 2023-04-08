@@ -4,16 +4,19 @@
 
 `burpgpt` leverages the power of `AI` to detect security vulnerabilities that traditional scanners might miss. It sends web traffic to an `OpenAI` model specified by the user, enabling sophisticated analysis within the passive scanner. With customisable prompts, this extension offers endless possibilities for tailored web traffic analysis to meet the specific needs of each user.
 
-The extension's objective is to provide a context-relevant security report that delivers an automated yet human-readable summary of potential security issues in the application. As such, it presents a fast and convenient approach to integrating the capabilities of `AI` and natural language processing into security assessments. It also alleviates the workload on security professionals while offering them a higher-level overview of the scanned application.
+The extension generates an automated security report that summarises potential security issues based on the user's prompt and real-time data from `Burp`-issued requests. By leveraging `AI` and natural language processing, the extension streamlines the security assessment process and provides security professionals with a higher-level overview of the scanned application or endpoint. This enables them to more easily identify potential security issues and prioritise their analysis, while also covering a larger potential attack surface.
+
+> [!WARNING]
+> While the report is automated, it still requires triaging and post-processing by security professionals, as it may contain false positives.
 
 ## Features
 
-- Provides an additional passive scan check to submit HTTP request and response data to a user-controlled GPT model for security analysis.
-- Allows for customisation of prompts to unlock infinite ways of interacting with OpenAI models.
-- Leverages the power of OpenAI's GPT-3 API to detect potential security vulnerabilities in the scanned application.
-- Allows the user to select the most suitable OpenAI model from the available options.
-- Offers easy API key rotation to provide greater control over billing and usage.
-- Integrates seamlessly with Burp Suite, making it easy to use and transparent once configured.
+- Provides an additional passive scan check to submit `HTTP` request and response data to a user-controlled `GPT` model for security analysis.
+- Allows for customisation of prompts to unlock infinite ways of interacting with `OpenAI` models.
+- Leverages the power of `OpenAI's GPT-3 API` to detect potential security vulnerabilities in the scanned application.
+- Allows the user to select the most suitable `OpenAI` model from the available options.
+- Offers easy `API key` rotation to provide greater control over billing and usage.
+- Integrates seamlessly with `Burp Suite`, making it easy to use and transparent once configured.
 
 ## Installation
 
