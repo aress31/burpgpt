@@ -50,7 +50,7 @@ test {
 }
 
 shadowJar {
-    baseName = 'my-app'
+    baseName = rootProject.name
     version = getVersion()
     manifest {
         attributes 'Main-Class': 'burp.MyBurpExtension'

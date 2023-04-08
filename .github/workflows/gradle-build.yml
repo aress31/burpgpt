@@ -35,4 +35,4 @@ jobs:
         with:
           name: build-artifacts
           path: |
-            build/libs
+            lib/build/libs
