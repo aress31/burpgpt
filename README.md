@@ -34,7 +34,7 @@ The extension's objective is to provide a context-relevant security report that 
 
 ### 2. Loading the Extension Into the `Burp Suite`
 
-To install `burpgpt` in `Burp Suite`, go to the `Extendensions` tab and click on the `Add` button. Then, load the `burpgpt-all` jar file located in the `.\build\libs` folder.
+To install `burpgpt` in `Burp Suite`, go to the `Extendensions` tab and click on the `Add` button. Then, load the `burpgpt-all` jar file located in the `.\lib\build\libs` folder.
 
 # Usage
 
