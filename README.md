@@ -9,6 +9,9 @@ The extension generates an automated security report that summarises potential s
 > [!WARNING]
 > While the report is automated, it still requires triaging and post-processing by security professionals, as it may contain false positives.
 
+> [!WARNING]
+> The effectiveness of this extension is heavily reliant on the quality and precision of the prompts created by the user for the `GPT` model. For specific tasks, such as evaluating the robustness of a cryptographic protocol within `JavaScript` files, it's essential to craft a well-defined prompt that incorporates relevant request/response data. This targeted approach will help ensure the `GPT` model generates accurate and valuable results for your security analysis.
+
 ## Features
 
 - Provides an additional passive scan check to submit `HTTP` request and response data to a user-controlled `GPT` model for security analysis.
