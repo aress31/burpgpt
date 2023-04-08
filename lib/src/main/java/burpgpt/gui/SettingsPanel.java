@@ -84,7 +84,7 @@ public class SettingsPanel extends JDialog implements PropertyChangeListener {
         });
         applyButton.setBackground(UIManager.getColor("Burp.burpOrange"));
         applyButton.setFont(new Font(applyButton.getFont().getName(), Font.BOLD, applyButton.getFont().getSize()));
-        add(applyButton, createConstraints(0, 4, 2));
+        add(applyButton, createConstraints(1, 4));
 
         // Pack and center the dialog
         pack();
@@ -98,15 +98,9 @@ public class SettingsPanel extends JDialog implements PropertyChangeListener {
         constraints.gridy = y;
         constraints.weightx = x == 0 ? 0 : 1;
         constraints.weighty = 0.5;
-        constraints.insets = new Insets(5, x == 0 ? 5 : 2, 5, x == 0 ? 2 : 5);
+        constraints.insets = new Insets(8, x == 0 ? 16 : 4, 8, x == 0 ? 4 : 16);
         constraints.anchor = y != 4 ? GridBagConstraints.LINE_START : GridBagConstraints.LINE_END;
-        constraints.fill = x == 0 ? GridBagConstraints.NONE : GridBagConstraints.HORIZONTAL;
-        return constraints;
-    }
-
-    private GridBagConstraints createConstraints(int x, int y, int gridWidth) {
-        GridBagConstraints constraints = createConstraints(x, y);
-        constraints.gridwidth = gridWidth;
+        constraints.fill = (x == 0 || y == 4) ? GridBagConstraints.NONE : GridBagConstraints.HORIZONTAL;
         return constraints;
     }
 
