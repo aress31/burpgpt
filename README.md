@@ -2,9 +2,9 @@
 
 [![Java CI with Gradle](https://github.com/aress31/burpgpt/actions/workflows/gradle-build.yml/badge.svg)](https://github.com/aress31/burpgpt/actions/workflows/gradle-build.yml)
 
-`burpgpt` utilises the power of artificial intelligence to identify potential security vulnerabilities that traditional "dumb" scanners might overlook. It sends traffic to a user-specified `OpenAI` model for analysis within the passive scanner. By providing the ability to customise prompts, this extension offers limitless possibilities for analysing web traffic according to specific user requirements.
+`burpgpt` leverages the power of `AI` to detect security vulnerabilities that traditional scanners might miss. It sends web traffic to an `OpenAI` model specified by the user, enabling sophisticated analysis within the passive scanner. With customisable prompts, this extension offers endless possibilities for tailored web traffic analysis to meet the specific needs of each user.
 
-The extension's objective is to provide a context-relevant security report that delivers an automated yet human-readable summary of potential security issues in the application. As such, it presents a fast and convenient approach to integrating the capabilities of AI and natural language processing into security assessments. It also alleviates the workload on security professionals while offering them a higher-level overview of the scanned application/endpoints.
+The extension's objective is to provide a context-relevant security report that delivers an automated yet human-readable summary of potential security issues in the application. As such, it presents a fast and convenient approach to integrating the capabilities of `AI` and natural language processing into security assessments. It also alleviates the workload on security professionals while offering them a higher-level overview of the scanned application.
 
 ## Features
 
