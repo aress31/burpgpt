@@ -22,6 +22,7 @@ The extension generates an automated security report that summarises potential s
 - Leverages the power of `OpenAI's GPT models` to detect potential security vulnerabilities in the scanned application.
 - Allows the user to select the most suitable `OpenAI` `model` from the available options.
 - Offers easy `API key` rotation to provide greater control over billing and usage.
+- Enables precise adjustments of the `max prompt length` for flexibility and ease of customisation for both large and small `prompts`.
 - Integrates seamlessly with `Burp Suite`, allowing for easy and transparent use once configured. It also displays the analysis results directly within the `Burp UI`, enabling efficient post-processing of the scan results.
 
 ## Installation
@@ -49,21 +50,22 @@ To install `burpgpt` in `Burp Suite`, first go to the `Extendensions` tab and cl
 
 # Usage
 
-To start using `burpgpt`, the user must first complete the following steps in the `Settings` panel accessible from the `Burp Suite` menu bar:
+To start using burpgpt, users need to complete the following steps in the Settings panel, which can be accessed from the Burp Suite menu bar:
 
-1. enter their `OpenAI API key`,
-2. select a `model`,
-3. and adjust or [create custom prompts](#2-prompt-configuration) as desired.
+1. Enter a valid `OpenAI API key`.
+2. Select a `model`.
+3. Define the `max prompt size`. This field controls the maximum `prompt` length sent to `OpenAI` to avoid exceeding the `maxTokens` of `GPT` models (typically around `2048` for `GPT-3`).
+4. Adjust or create custom prompts according to your requirements.
 
 <img src="https://user-images.githubusercontent.com/11601622/230774262-9e7008ac-68e2-49a8-9c41-7aa1139198a3.png" alt="burpgpt UI" width="50%" height="50%">
 
-After configuring the extension with the appropriate `API key`, `model`, and `prompt`, all passively scanned items will be analysed by the selected `OpenAI model` based on the configured settings. The results of the analysis will be displayed on a per-endpoint basis as an `Informational`-level finding.
+Once configured as outlined above, the `Burp passive scanner` sends each request to the chosen `OpenAI model` via the `OpenAI API` for analysis, producing `Informational`-level severity findings based on the results.
 
 <img src="https://user-images.githubusercontent.com/11601622/230777816-9f4c1e16-646f-4581-935f-e341f1323493.jpg" alt="burpgpt finding" width="75%" height="75%">
 
 ## Prompt Configuration
 
-`burpgpt` allows users to customise the `prompt` for traffic-based analysis by using a system of `placeholders`. We recommend including the maximum relevant information in the prompt. The following `placeholders` are directly handled by the extension and can be used to dynamically insert specific values into the prompt:
+`burpgpt` enables users to tailor the `prompt` for traffic analysis using a `placeholder` system. To include relevant information, we recommend using these `placeholders`, which the extension handles directly, allowing dynamic insertion of specific values into the `prompt`:
 
 - `{REQUEST}` - The scanned request.
   - `{URL}` - The URL of the scanned request.
@@ -73,7 +75,7 @@ After configuring the extension with the appropriate `API key`, `model`, and `pr
 - `{RESPONSE}` - The scanned response.
   - `{RESPONSE_HEADERS}` - The headers of the scanned response.
   - `{RESPONSE_BODY}` - The body of the scanned response.
-- `{IS_TRUNCATED_PROMPT}` - A `boolean` value that indicates if the `prompt` was truncated to `1024 characters` to fit within the `2048 character` limit imposed by `GPT-3.5 models`. This truncation is necessary for the extension to handle requests and responses within the character limit. The extension sets `{IS_TRUNCATED_PROMPT}` to reflect whether the prompt was truncated.
+- `{IS_TRUNCATED_PROMPT}` - A `boolean` value that is programmatically set to `true` or `false` to indicate whether the `prompt` was truncated to the `Maximum Prompt Size` defined in the `Settings`.
 
 These `placeholders` can be used in the custom `prompt` to dynamically generate a request/response analysis `prompt` that is specific to the scanned request.
 
@@ -145,10 +147,10 @@ The following list of example use cases showcases the bespoke and highly customi
 
 # Roadmap
 
-- [ ] Add a new field to the `Settings` panel that allows users to set the `maxTokens` limit for requests, thereby limiting the request size.
+- [x] Add a new field to the `Settings` panel that allows users to set the `maxTokens` limit for requests, thereby limiting the request size.
 - [ ] Retrieve the precise `maxTokens` value for each `model` to transmit the maximum allowable data and obtain the most extensive `GPT` response possible.
 - [ ] Implement persistent configuration storage to preserve settings across `Burp Suite` restarts.
-- [ ] Enhance the code for accurate parsing of `GPT` responses into the `Vulnerability` `model` for improved vulnerability reporting.
+- [ ] Enhance the code for accurate parsing of `GPT` responses into the `Vulnerability model` for improved reporting.
 
 ## Project Information
 

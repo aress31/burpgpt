@@ -28,6 +28,8 @@ public class MyBurpExtension implements BurpExtension, PropertyChangeListener {
     @Getter
     List<String> modelIds = Arrays.asList("davinci", "ada", "babbage", "curie");
     @Getter
+    private int maxPromptSize = 1024;
+    @Getter
     private String modelId = modelIds.get(0);
     @Getter
     String prompt = "Please analyze the following HTTP request and response for potential security vulnerabilities, "
@@ -69,15 +71,18 @@ public class MyBurpExtension implements BurpExtension, PropertyChangeListener {
     public void propertyChange(PropertyChangeEvent evt) {
     }
 
-    public void updateSettings(String newApiKey, String newModelId, String newPrompt) {
-        String[] newValues = { newApiKey, newModelId, newPrompt };
-        String[] oldValues = { this.apiKey, this.modelId, this.prompt };
+    public void updateSettings(String newApiKey, String newModelId, int newMaxPromptSize, String newPrompt) {
+        String[] newValues = {
+                newApiKey, newModelId, Integer.toString(newMaxPromptSize), newPrompt };
+        String[] oldValues = {
+                this.apiKey, this.modelId, Integer.toString(this.maxPromptSize), this.prompt };
 
         this.apiKey = newApiKey;
         this.modelId = newModelId;
+        this.maxPromptSize = newMaxPromptSize;
         this.prompt = newPrompt;
 
-        this.gptClient.updateSettings(newApiKey, newModelId, newPrompt);
+        this.gptClient.updateSettings(newApiKey, newModelId, newMaxPromptSize, newPrompt);
 
         propertyChangeSupport.firePropertyChange("settingsChanged", oldValues, newValues);
 
@@ -85,8 +90,9 @@ public class MyBurpExtension implements BurpExtension, PropertyChangeListener {
             logging.logToOutput("[*] Updated extension settings:");
             logging.logToOutput(String.format("- apiKey: %s\n" +
                     "- modelId: %s\n" +
+                    "- maxPromptSize: %s\n" +
                     "- prompt: %s",
-                    newApiKey, newModelId, newPrompt));
+                    newApiKey, newModelId, newMaxPromptSize, newPrompt));
         }
     }
 }

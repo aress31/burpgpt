@@ -26,6 +26,7 @@ public class GPTClient {
 
   private String apiKey;
   private String modelId;
+  private int maxPromptSize;
   private String prompt;
   private final OkHttpClient client;
   private final Gson gson;
@@ -44,9 +45,10 @@ public class GPTClient {
     gson = new Gson();
   }
 
-  public void updateSettings(String newApiKey, String newModelId, String newPrompt) {
+  public void updateSettings(String newApiKey, String newModelId, int newMaxPromptSize, String newPrompt) {
     this.apiKey = newApiKey;
     this.modelId = newModelId;
+    this.maxPromptSize = newMaxPromptSize;
     this.prompt = newPrompt;
   }
 
@@ -76,7 +78,7 @@ public class GPTClient {
     // and receives a list of potential vulnerabilities in response.
     // TODO: Add a field to specify the maxTokens value
     try {
-      GPTRequest gptRequest = new GPTRequest(selectedRequest, selectedResponse, modelId, 1, 1024);
+      GPTRequest gptRequest = new GPTRequest(selectedRequest, selectedResponse, modelId, 1, maxPromptSize);
       GPTResponse gptResponse = getCompletions(gptRequest, apiKey, modelId, prompt);
       return Pair.of(gptRequest, gptResponse);
     } catch (IOException e) {
@@ -92,7 +94,7 @@ public class GPTClient {
     MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     JsonObject jsonObject = new JsonObject();
     jsonObject.addProperty("prompt", gptRequest.getPrompt());
-    jsonObject.addProperty("max_tokens", gptRequest.getMaxTokens());
+    jsonObject.addProperty("max_tokens", gptRequest.getMaxPromptSize());
     jsonObject.addProperty("n", gptRequest.getN());
     jsonObject.addProperty("model", modelId);
     String jsonBody = gson.toJson(jsonObject);

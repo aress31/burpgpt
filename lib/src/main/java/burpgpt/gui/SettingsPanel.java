@@ -14,8 +14,10 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.UIManager;
 
 import burp.MyBurpExtension;
@@ -24,6 +26,7 @@ public class SettingsPanel extends JDialog implements PropertyChangeListener {
 
     private JTextField apiKeyField;
     private JComboBox<String> modelIdComboBox;
+    private JSpinner maxPromptSizeField;
     private JTextArea promptField;
 
     private String modelId;
@@ -36,70 +39,81 @@ public class SettingsPanel extends JDialog implements PropertyChangeListener {
         setResizable(false);
         setMinimumSize(new Dimension(800, 400));
 
-        addApiKeyField(myBurpExtension);
-        addModelIdComboBox(myBurpExtension);
-        addPromptField(myBurpExtension);
-        addPromptDescriptionLabel();
-        addApplyButton(myBurpExtension);
+        addApiKeyField(myBurpExtension, 0);
+        addModelIdComboBox(myBurpExtension, 1);
+        addMaxPromptSizeField(myBurpExtension, 2);
+        addPromptField(myBurpExtension, 3);
+        addPromptDescriptionLabel(4);
+        addApplyButton(myBurpExtension, 5);
 
         pack();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
     }
 
-    private void addApiKeyField(MyBurpExtension myBurpExtension) {
+    private void addApiKeyField(MyBurpExtension myBurpExtension, int y) {
         JLabel apiKeyLabel = new JLabel("API Key:");
         apiKeyField = new JTextField(myBurpExtension.getApiKey(), 20);
-        add(apiKeyLabel, createConstraints(0, 0));
-        add(apiKeyField, createConstraints(1, 0));
+        add(apiKeyLabel, createConstraints(0, y));
+        add(apiKeyField, createConstraints(1, y));
     }
 
-    private void addModelIdComboBox(MyBurpExtension myBurpExtension) {
+    private void addModelIdComboBox(MyBurpExtension myBurpExtension, int y) {
         JLabel modelIdLabel = new JLabel("Model:");
         modelIdComboBox = new JComboBox<>(myBurpExtension.getModelIds().toArray(new String[0]));
         modelIdComboBox.setSelectedItem(myBurpExtension.getModelId());
         modelIdComboBox.addActionListener(e -> modelId = (String) modelIdComboBox.getSelectedItem());
-        add(modelIdLabel, createConstraints(0, 1));
-        add(modelIdComboBox, createConstraints(1, 1));
+        add(modelIdLabel, createConstraints(0, y));
+        add(modelIdComboBox, createConstraints(1, y));
     }
 
-    private void addPromptField(MyBurpExtension myBurpExtension) {
+    private void addMaxPromptSizeField(MyBurpExtension myBurpExtension, int y) {
+        JLabel maxPromptSizeLabel = new JLabel("Maximum Prompt Size:");
+        maxPromptSizeField = new JSpinner(
+                new SpinnerNumberModel(myBurpExtension.getMaxPromptSize(), 1, Integer.MAX_VALUE, 1));
+        add(maxPromptSizeLabel, createConstraints(0, y));
+        add(maxPromptSizeField, createConstraints(1, y));
+    }
+
+    private void addPromptField(MyBurpExtension myBurpExtension, int y) {
         JLabel promptLabel = new JLabel("Prompt:");
         promptField = new JTextArea(myBurpExtension.getPrompt(), 14, 20);
         promptField.setWrapStyleWord(true);
         promptField.setLineWrap(true);
         JScrollPane promptScrollPane = new JScrollPane(promptField);
-        add(promptLabel, createConstraints(0, 2));
-        add(promptScrollPane, createConstraints(1, 2));
+        add(promptLabel, createConstraints(0, y));
+        add(promptScrollPane, createConstraints(1, y));
     }
 
-    private void addPromptDescriptionLabel() {
+    private void addPromptDescriptionLabel(int y) {
         JLabel promptDescriptionLabel = new JLabel(
                 "<html>Refer to the repository (<a href=\"https://github.com/aress31/burpgpt\">https://github.com/aress31/burpgpt</a>) to learn how to optimally set the prompt for the GPT model.</html>");
         promptDescriptionLabel.putClientProperty("html.disable", null);
         add(promptDescriptionLabel, createConstraints(1, 3));
     }
 
-    private void addApplyButton(MyBurpExtension myBurpExtension) {
+    private void addApplyButton(MyBurpExtension myBurpExtension, int y) {
         JButton applyButton = new JButton("Apply");
         applyButton.addActionListener(e -> applySettings(myBurpExtension));
         applyButton.setBackground(UIManager.getColor("Burp.burpOrange"));
         applyButton.setFont(new Font(applyButton.getFont().getName(), Font.BOLD, applyButton.getFont().getSize()));
-        add(applyButton, createConstraints(1, 4));
+        add(applyButton, createConstraints(1, y));
     }
 
     private void applySettings(MyBurpExtension myBurpExtension) {
         String newApiKey = apiKeyField.getText().trim();
         String newModelId = (String) modelIdComboBox.getSelectedItem();
+        int newMaxPromptSize = (int) maxPromptSizeField.getValue();
         String newPromptText = promptField.getText().trim();
 
-        if (newApiKey.isEmpty() || newModelId.isEmpty() || newPromptText.isEmpty()) {
-            JOptionPane.showMessageDialog(SettingsPanel.this, "All fields are required", "Error",
+        if (newApiKey.isEmpty() || newModelId.isEmpty() || newPromptText.isEmpty() || newMaxPromptSize <= 0) {
+            JOptionPane.showMessageDialog(SettingsPanel.this,
+                    "All fields are required and max prompt size must be greater than 0", "Error",
                     JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        myBurpExtension.updateSettings(newApiKey, newModelId, newPromptText);
+        myBurpExtension.updateSettings(newApiKey, newModelId, newMaxPromptSize, newPromptText);
         setVisible(false);
     }
 
@@ -110,8 +124,8 @@ public class SettingsPanel extends JDialog implements PropertyChangeListener {
         constraints.weightx = x == 0 ? 0 : 1;
         constraints.weighty = 0.5;
         constraints.insets = new Insets(8, x == 0 ? 16 : 4, 8, x == 0 ? 4 : 16);
-        constraints.anchor = y != 4 ? GridBagConstraints.LINE_START : GridBagConstraints.LINE_END;
-        constraints.fill = (x == 0 || y == 4) ? GridBagConstraints.NONE : GridBagConstraints.HORIZONTAL;
+        constraints.anchor = y != 5 ? GridBagConstraints.LINE_START : GridBagConstraints.LINE_END;
+        constraints.fill = (x == 0 || y == 5) ? GridBagConstraints.NONE : GridBagConstraints.HORIZONTAL;
         return constraints;
     }
 
@@ -121,7 +135,8 @@ public class SettingsPanel extends JDialog implements PropertyChangeListener {
             String[] newValues = (String[]) evt.getNewValue();
             apiKeyField.setText(newValues[0]);
             modelIdComboBox.setSelectedItem(newValues[1]);
-            promptField.setText(newValues[2]);
+            maxPromptSizeField.setValue(Integer.parseInt(newValues[2]));
+            promptField.setText(newValues[3]);
         }
     }
 }
