@@ -52,7 +52,7 @@ To install `burpgpt` in `Burp Suite`, first go to the `Extendensions` tab and cl
 To start using `burpgpt`, the user must first complete the following steps in the settings panel accessible from the `Burp Suite` menu bar:
 
 1. enter their `OpenAI API key`,
-2. select or modify a `model`,
+2. select a `model`,
 3. and adjust or [create custom prompts](#2-prompt-configuration) as desired.
 
 <img src="https://user-images.githubusercontent.com/11601622/230774262-9e7008ac-68e2-49a8-9c41-7aa1139198a3.png" alt="burpgpt UI" width="50%" height="50%">
