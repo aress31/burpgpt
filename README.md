@@ -67,9 +67,8 @@ Once configured as outlined above, the `Burp passive scanner` sends each request
 
 `burpgpt` enables users to tailor the `prompt` for traffic analysis using a `placeholder` system. To include relevant information, we recommend using these `placeholders`, which the extension handles directly, allowing dynamic insertion of specific values into the `prompt`:
 
-+-------------+--------------------------------------------------------------------+
 | Placeholder | Description |
-+-------------+--------------------------------------------------------------------+
+|-------------|-------------|
 | `{REQUEST}` | The scanned request. |
 | `{URL}` | The URL of the scanned request. |
 | `{METHOD}` | The HTTP request method used in the scanned request. |
@@ -79,7 +78,6 @@ Once configured as outlined above, the `Burp passive scanner` sends each request
 | `{RESPONSE_HEADERS}` | The headers of the scanned response. |
 | `{RESPONSE_BODY}` | The body of the scanned response. |
 | `{IS_TRUNCATED_PROMPT}` | A `boolean` value that is programmatically set to `true` or `false` to indicate whether the `prompt` was truncated to the `Maximum Prompt Size` defined in the `Settings`. |
-+-------------+--------------------------------------------------------------------+
 
 These `placeholders` can be used in the custom `prompt` to dynamically generate a request/response analysis `prompt` that is specific to the scanned request.
 
