@@ -2,9 +2,9 @@
 
 [![Java CI with Gradle](https://github.com/aress31/burpgpt/actions/workflows/gradle-build.yml/badge.svg)](https://github.com/aress31/burpgpt/actions/workflows/gradle-build.yml)
 
-`burpgpt` leverages the power of `AI` to detect security vulnerabilities that traditional scanners might miss. It sends web traffic to an `OpenAI` model specified by the user, enabling sophisticated analysis within the passive scanner. This extension offers customisable prompts that enable tailored web traffic analysis to meet the specific needs of each user. Check out the [Example Use Cases](#example-use-cases) section for inspiration.
+`burpgpt` leverages the power of `AI` to detect security vulnerabilities that traditional scanners might miss. It sends web traffic to an `OpenAI` `model` specified by the user, enabling sophisticated analysis within the passive scanner. This extension offers customisable prompts that enable tailored web traffic analysis to meet the specific needs of each user. Check out the [Example Use Cases](#example-use-cases) section for inspiration.
 
-The extension generates an automated security report that summarises potential security issues based on the user's prompt and real-time data from `Burp`-issued requests. By leveraging `AI` and natural language processing, the extension streamlines the security assessment process and provides security professionals with a higher-level overview of the scanned application or endpoint. This enables them to more easily identify potential security issues and prioritise their analysis, while also covering a larger potential attack surface.
+The extension generates an automated security report that summarises potential security issues based on the user's `prompt` and real-time data from `Burp`-issued requests. By leveraging `AI` and natural language processing, the extension streamlines the security assessment process and provides security professionals with a higher-level overview of the scanned application or endpoint. This enables them to more easily identify potential security issues and prioritise their analysis, while also covering a larger potential attack surface.
 
 > [!WARNING]
 > Data traffic is sent to OpenAI for analysis. If you have concerns about this or are using the extension for security-critical applications, it is important to carefully consider this and review [OpenAI's Privacy Policy](https://openai.com/policies/privacy-policy) for further information.
@@ -13,14 +13,14 @@ The extension generates an automated security report that summarises potential s
 > While the report is automated, it still requires triaging and post-processing by security professionals, as it may contain false positives.
 
 > [!WARNING]
-> The effectiveness of this extension is heavily reliant on the quality and precision of the prompts created by the user for the `GPT` model. For specific tasks, such as evaluating the robustness of a cryptographic protocol within `JavaScript` files, it's essential to craft a well-defined prompt that incorporates relevant request/response data. This targeted approach will help ensure the `GPT` model generates accurate and valuable results for your security analysis.
+> The effectiveness of this extension is heavily reliant on the quality and precision of the prompts created by the user for the `GPT` model. For specific tasks, such as evaluating the robustness of a cryptographic protocol within `JavaScript` files, it's essential to craft a well-defined `prompt` that incorporates relevant request/response data. This targeted approach will help ensure the `GPT` `model` generates accurate and valuable results for your security analysis.
 
 ## Features
 
-- Provides an additional passive scan check, enabling users to submit `HTTP` request and response data to an `OpenAI`-controlled `GPT` model for security analysis, through the use of a placeholder system.
+- Provides an additional passive scan check, enabling users to submit `HTTP` request and response data to an `OpenAI`-controlled `GPT` `model` for security analysis, through the use of a placeholder system.
 - Empowers users to customise prompts and unleash limitless possibilities for interacting with `OpenAI` models. Browse through the [Example Use Cases](#example-use-cases) for inspiration.
 - Leverages the power of `OpenAI's GPT` models to detect potential security vulnerabilities in the scanned application.
-- Allows the user to select the most suitable `OpenAI` model from the available options.
+- Allows the user to select the most suitable `OpenAI` `model` from the available options.
 - Offers easy `API key` rotation to provide greater control over billing and usage.
 - Integrates seamlessly with `Burp Suite`, allowing for easy and transparent use once configured. It also displays the analysis results directly within the `Burp UI`, enabling efficient post-processing of the scan results.
 
@@ -43,19 +43,25 @@ The extension generates an automated security report that summarises potential s
    gradle shadowJar
    ```
 
-### 2. Loading the Extension Into the `Burp Suite`
+### 2. Loading the Extension Into `Burp Suite`
 
 To install `burpgpt` in `Burp Suite`, first go to the `Extendensions` tab and click on the `Add` button. Then, select the `burpgpt-all` jar file located in the `.\lib\build\libs` folder to load the extension.
 
 # Usage
 
-Before using `burpgpt`, the user needs to fill in their `OpenAI API key` and select/change a `model` within the settings panel available on the `Burp Suite` menu bar. The user can also tweak or use custom `prompts` within the settings panel.
+To start using `burpgpt`, the user must first complete the following steps in the settings panel accessible from the `Burp Suite` menu bar:
 
-Once the `OpenAI` model is configured, all passively scanned items would be sent to the selected `OpenAI model` for analysis based on the user's `prompt`. The `prompt` accepts placeholders that are post-processed prior to sending to the `OpenAI model` to replace with the relevant request/response values.
+1. enter their OpenAI API key,
+2. select or modify a model,
+3. and adjust or [create custom prompts](#2-prompt-configuration) as desired.
 
-Here is a list of the supported placeholders in the burpgpt extension:
+After configuring the extension with the appropriate `API key`, `model`, and `prompt`, all passively scanned items will be analysed by the selected `OpenAI` `model` based on the configured settings. The results of the analysis will be displayed on a per-endpoint basis as an `Informational`-level finding.
 
-- `{IS_TRUNCATED_PROMPT}` - A `boolean` value that indicates whether the prompt has been truncated to fit within the `2048 character` limit imposed by most `GPT-3.5` models' `maxTokens` value. This value is programmatically set by the extenstion.
+## Prompt Configuration
+
+`burpgpt` allows users to customise the `prompt` for traffic-based analysis by using a system of `placeholders`. We recommend including the maximum relevant information in the prompt. The following `placeholders` are directly handled by the extension and can be used to dynamically insert specific values into the prompt:
+
+- `{IS_TRUNCATED_PROMPT}` - A `boolean` value that indicates whether the `prompt` has been truncated to fit within the `2048 character` limit imposed by most `GPT-3.5` models' `maxTokens` value. This value is programmatically set by the extenstion.
 - `{URL}` - The URL of the scanned request.
 - `{METHOD}` - The HTTP request method used in the scanned request.
 - `{REQUEST_HEADERS}` - The headers of the scanned request.
@@ -63,7 +69,7 @@ Here is a list of the supported placeholders in the burpgpt extension:
 - `{RESPONSE_HEADERS}` - The headers of the scanned response.
 - `{RESPONSE_BODY}` - The body of the scanned response.
 
-These placeholders can be used in the custom prompt to dynamically generate a request/response analysis prompt that is specific to the scanned request.
+These `placeholders` can be used in the custom `prompt` to dynamically generate a request/response analysis `prompt` that is specific to the scanned request.
 
 ## Example Use Cases
 
@@ -114,7 +120,7 @@ The following list of example use cases showcases the bespoke and highly customi
   Identify any potential vulnerabilities in the data exchanged between the two serverless functions and report them.
   ```
 
-- Analysing the request and response data for potential security vulnerabilities specific to a single-page application (SPA) framework:
+- Analysing the request and response data for potential security vulnerabilities specific to a Single-Page Application (SPA) framework:
 
   ```
   Analyse the request and response data for potential security vulnerabilities specific to the {SPA_FRAMEWORK_NAME} SPA framework:
@@ -131,9 +137,9 @@ The following list of example use cases showcases the bespoke and highly customi
 
 # Roadmap
 
-- [ ] Retrieve the precise `maxTokens` value for each model to transmit the maximum allowable data and obtain the most extensive `GPT` response possible.
+- [ ] Retrieve the precise `maxTokens` value for each `model` to transmit the maximum allowable data and obtain the most extensive `GPT` response possible.
 - [ ] Implement persistent configuration storage to preserve settings across `Burp Suite` restarts.
-- [ ] Enhance the code for accurate parsing of `GPT` responses into the `Vulnerability` model for improved vulnerability reporting.
+- [ ] Enhance the code for accurate parsing of `GPT` responses into the `Vulnerability` `model` for improved vulnerability reporting.
 
 ## Project Information
 
