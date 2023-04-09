@@ -58,8 +58,6 @@ shadowJar {
     }
 }
 
-version = getVersion()
-
 def getVersion() {
     def cmd = 'git describe --tags --always --dirty=-SNAPSHOT'.execute()
     cmd.waitFor()
