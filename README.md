@@ -41,7 +41,7 @@ The extension generates an automated security report that summarises potential s
 3. Build the standalone `jar`:
 
    ```bash
-   gradle shadowJar
+   ./gradlew shadowJar
    ```
 
 ### 2. Loading the Extension Into `Burp Suite`
