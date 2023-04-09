@@ -3,7 +3,7 @@ name: Report a feature request
 about: Propose an idea or enhancement for this project.
 title: "[FEATURE] Brief description of the feature"
 labels: enhancement
-assignees: ""
+assignees: aress31
 ---
 
 # Problem or Use Case

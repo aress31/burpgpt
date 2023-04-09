@@ -3,7 +3,7 @@ name: Report a bug
 about: Report an issue to help us enhance the project.
 title: "[BUG] Brief description of the issue"
 labels: bug
-assignees: ""
+assignees: aress31
 ---
 
 # Description
