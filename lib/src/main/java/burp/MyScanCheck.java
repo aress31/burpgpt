@@ -35,7 +35,7 @@ public class MyScanCheck implements ScanCheck {
 
     @Override
     public AuditResult activeAudit(HttpRequestResponse httpRequestResponse, AuditInsertionPoint auditInsertionPoint) {
-        throw new UnsupportedOperationException("Unimplemented method 'activeAudit'");
+        return AuditResult.auditResult(new ArrayList<>());
     }
 
     @Override

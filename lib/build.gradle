@@ -51,8 +51,8 @@ test {
 }
 
 shadowJar {
-    baseName = rootProject.name
-    version = getVersion()
+    archiveBaseName.set(rootProject.name)
+    archiveVersion.set(getVersion())
     manifest {
         attributes 'Main-Class': 'burp.MyBurpExtension'
     }
