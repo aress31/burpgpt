@@ -2,9 +2,12 @@
 
 [![Java CI with Gradle](https://github.com/aress31/burpgpt/actions/workflows/gradle-build.yml/badge.svg)](https://github.com/aress31/burpgpt/actions/workflows/gradle-build.yml)
 
-`burpgpt` leverages the power of `AI` to detect security vulnerabilities that traditional scanners might miss. It sends web traffic to an `OpenAI` model specified by the user, enabling sophisticated analysis within the passive scanner. With customisable prompts, this extension offers endless possibilities for tailored web traffic analysis to meet the specific needs of each user.
+`burpgpt` leverages the power of `AI` to detect security vulnerabilities that traditional scanners might miss. It sends web traffic to an `OpenAI` model specified by the user, enabling sophisticated analysis within the passive scanner. This extension offers customisable prompts that enable tailored web traffic analysis to meet the specific needs of each user. Check out the [Example Use Cases](#example-use-cases) section for inspiration.
 
 The extension generates an automated security report that summarises potential security issues based on the user's prompt and real-time data from `Burp`-issued requests. By leveraging `AI` and natural language processing, the extension streamlines the security assessment process and provides security professionals with a higher-level overview of the scanned application or endpoint. This enables them to more easily identify potential security issues and prioritise their analysis, while also covering a larger potential attack surface.
+
+> [!WARNING]
+> Data traffic is sent to OpenAI for analysis. If you have concerns about this or are using the extension for security-critical applications, it is important to carefully consider this and review [OpenAI's Privacy Policy](https://openai.com/policies/privacy-policy) for further information.
 
 > [!WARNING]
 > While the report is automated, it still requires triaging and post-processing by security professionals, as it may contain false positives.
@@ -14,12 +17,12 @@ The extension generates an automated security report that summarises potential s
 
 ## Features
 
-- Provides an additional passive scan check to submit `HTTP` request and response data to a user-controlled `GPT` model for security analysis.
-- Allows for customisation of prompts to unlock infinite ways of interacting with `OpenAI` models.
-- Leverages the power of `OpenAI's GPT-3 API` to detect potential security vulnerabilities in the scanned application.
+- Provides an additional passive scan check, enabling users to submit `HTTP` request and response data to an `OpenAI`-controlled `GPT` model for security analysis, through the use of a placeholder system.
+- Empowers users to customise prompts and unleash limitless possibilities for interacting with `OpenAI` models. Browse through the [Example Use Cases](#example-use-cases) for inspiration.
+- Leverages the power of `OpenAI's GPT` models to detect potential security vulnerabilities in the scanned application.
 - Allows the user to select the most suitable `OpenAI` model from the available options.
 - Offers easy `API key` rotation to provide greater control over billing and usage.
-- Integrates seamlessly with `Burp Suite`, making it easy to use and transparent once configured.
+- Integrates seamlessly with `Burp Suite`, allowing for easy and transparent use once configured. It also displays the analysis results directly within the `Burp UI`, enabling efficient post-processing of the scan results.
 
 ## Installation
 
@@ -42,7 +45,7 @@ The extension generates an automated security report that summarises potential s
 
 ### 2. Loading the Extension Into the `Burp Suite`
 
-To install `burpgpt` in `Burp Suite`, go to the `Extendensions` tab and click on the `Add` button. Then, load the `burpgpt-all` jar file located in the `.\lib\build\libs` folder.
+To install `burpgpt` in `Burp Suite`, first go to the `Extendensions` tab and click on the `Add` button. Then, select the `burpgpt-all` jar file located in the `.\lib\build\libs` folder to load the extension.
 
 # Usage
 
@@ -61,6 +64,70 @@ Here is a list of the supported placeholders in the burpgpt extension:
 - `{RESPONSE_BODY}` - The body of the scanned response.
 
 These placeholders can be used in the custom prompt to dynamically generate a request/response analysis prompt that is specific to the scanned request.
+
+## Example Use Cases
+
+The following list of example use cases showcases the bespoke and highly customisable nature of `burpgpt`, which enables users to tailor their web traffic analysis to meet their specific needs.
+
+- Identifying potential vulnerabilities in web applications that use a crypto library affected by a specific CVE:
+
+  ```
+  Analyse the request and response data for potential security vulnerabilities related to the {CRYPTO_LIBRARY_NAME} crypto library affected by CVE-{CVE_NUMBER}:
+
+  Web Application URL: {URL}
+  Crypto Library Name: {CRYPTO_LIBRARY_NAME}
+  CVE Number: CVE-{CVE_NUMBER}
+  Request Headers: {REQUEST_HEADERS}
+  Response Headers: {RESPONSE_HEADERS}
+  Request Body: {REQUEST_BODY}
+  Response Body: {RESPONSE_BODY}
+
+  Identify any potential vulnerabilities related to the {CRYPTO_LIBRARY_NAME} crypto library affected by CVE-{CVE_NUMBER} in the request and response data and report them.
+  ```
+
+- Scanning for vulnerabilities in web applications that use biometric authentication by analysing request and response data related to the authentication process:
+
+  ```
+  Analyse the request and response data for potential security vulnerabilities related to the biometric authentication process:
+
+  Web Application URL: {URL}
+  Biometric Authentication Request Headers: {REQUEST_HEADERS}
+  Biometric Authentication Response Headers: {RESPONSE_HEADERS}
+  Biometric Authentication Request Body: {REQUEST_BODY}
+  Biometric Authentication Response Body: {RESPONSE_BODY}
+
+  Identify any potential vulnerabilities related to the biometric authentication process in the request and response data and report them.
+  ```
+
+- Analysing the request and response data exchanged between serverless functions for potential security vulnerabilities:
+
+  ```
+  Analyse the request and response data exchanged between serverless functions for potential security vulnerabilities:
+
+  Serverless Function A URL: {URL}
+  Serverless Function B URL: {URL}
+  Serverless Function A Request Headers: {REQUEST_HEADERS}
+  Serverless Function B Response Headers: {RESPONSE_HEADERS}
+  Serverless Function A Request Body: {REQUEST_BODY}
+  Serverless Function B Response Body: {RESPONSE_BODY}
+
+  Identify any potential vulnerabilities in the data exchanged between the two serverless functions and report them.
+  ```
+
+- Analysing the request and response data for potential security vulnerabilities specific to a single-page application (SPA) framework:
+
+  ```
+  Analyse the request and response data for potential security vulnerabilities specific to the {SPA_FRAMEWORK_NAME} SPA framework:
+
+  Web Application URL: {URL}
+  SPA Framework Name: {SPA_FRAMEWORK_NAME}
+  Request Headers: {REQUEST_HEADERS}
+  Response Headers: {RESPONSE_HEADERS}
+  Request Body: {REQUEST_BODY}
+  Response Body: {RESPONSE_BODY}
+
+  Identify any potential vulnerabilities related to the {SPA_FRAMEWORK_NAME} SPA framework in the request and response data and report them.
+  ```
 
 # Roadmap
 
