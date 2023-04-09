@@ -2,7 +2,7 @@
 
 [![Java CI with Gradle](https://github.com/aress31/burpgpt/actions/workflows/gradle-build.yml/badge.svg)](https://github.com/aress31/burpgpt/actions/workflows/gradle-build.yml)
 
-`burpgpt` leverages the power of `AI` to detect security vulnerabilities that traditional scanners might miss. It sends web traffic to an `OpenAI` `model` specified by the user, enabling sophisticated analysis within the passive scanner. This extension offers customisable prompts that enable tailored web traffic analysis to meet the specific needs of each user. Check out the [Example Use Cases](#example-use-cases) section for inspiration.
+`burpgpt` leverages the power of `AI` to detect security vulnerabilities that traditional scanners might miss. It sends web traffic to an `OpenAI` `model` specified by the user, enabling sophisticated analysis within the passive scanner. This extension offers customisable `prompts` that enable tailored web traffic analysis to meet the specific needs of each user. Check out the [Example Use Cases](#example-use-cases) section for inspiration.
 
 The extension generates an automated security report that summarises potential security issues based on the user's `prompt` and real-time data from `Burp`-issued requests. By leveraging `AI` and natural language processing, the extension streamlines the security assessment process and provides security professionals with a higher-level overview of the scanned application or endpoint. This enables them to more easily identify potential security issues and prioritise their analysis, while also covering a larger potential attack surface.
 
@@ -13,13 +13,13 @@ The extension generates an automated security report that summarises potential s
 > While the report is automated, it still requires triaging and post-processing by security professionals, as it may contain false positives.
 
 > [!WARNING]
-> The effectiveness of this extension is heavily reliant on the quality and precision of the prompts created by the user for the `GPT` model. For specific tasks, such as evaluating the robustness of a cryptographic protocol within `JavaScript` files, it's essential to craft a well-defined `prompt` that incorporates relevant request/response data. This targeted approach will help ensure the `GPT` `model` generates accurate and valuable results for your security analysis.
+> The effectiveness of this extension is heavily reliant on the [quality and precision of the prompts](#prompt-configuration) created by the user for the `GPT` model. This targeted approach will help ensure the `GPT model` generates accurate and valuable results for your security analysis.
 
 ## Features
 
 - Provides an additional passive scan check, enabling users to submit `HTTP` request and response data to an `OpenAI`-controlled `GPT` `model` for security analysis, through the use of a placeholder system.
-- Empowers users to customise prompts and unleash limitless possibilities for interacting with `OpenAI` models. Browse through the [Example Use Cases](#example-use-cases) for inspiration.
-- Leverages the power of `OpenAI's GPT` models to detect potential security vulnerabilities in the scanned application.
+- Empowers users to customise `prompts` and unleash limitless possibilities for interacting with `OpenAI models`. Browse through the [Example Use Cases](#example-use-cases) for inspiration.
+- Leverages the power of `OpenAI's GPT models` to detect potential security vulnerabilities in the scanned application.
 - Allows the user to select the most suitable `OpenAI` `model` from the available options.
 - Offers easy `API key` rotation to provide greater control over billing and usage.
 - Integrates seamlessly with `Burp Suite`, allowing for easy and transparent use once configured. It also displays the analysis results directly within the `Burp UI`, enabling efficient post-processing of the scan results.
@@ -51,8 +51,8 @@ To install `burpgpt` in `Burp Suite`, first go to the `Extendensions` tab and cl
 
 To start using `burpgpt`, the user must first complete the following steps in the settings panel accessible from the `Burp Suite` menu bar:
 
-1. enter their OpenAI API key,
-2. select or modify a model,
+1. enter their `OpenAI API key`,
+2. select or modify a `model`,
 3. and adjust or [create custom prompts](#2-prompt-configuration) as desired.
 
 After configuring the extension with the appropriate `API key`, `model`, and `prompt`, all passively scanned items will be analysed by the selected `OpenAI` `model` based on the configured settings. The results of the analysis will be displayed on a per-endpoint basis as an `Informational`-level finding.
@@ -70,6 +70,8 @@ After configuring the extension with the appropriate `API key`, `model`, and `pr
 - `{RESPONSE_BODY}` - The body of the scanned response.
 
 These `placeholders` can be used in the custom `prompt` to dynamically generate a request/response analysis `prompt` that is specific to the scanned request.
+
+> [!NOTE] > `Burp Suite` provides the capability to support arbitrary `placeholders` through the use of [Session handling rules](https://portswigger.net/support/configuring-burp-suites-session-handling-rules) or extensions such as [Custom Parameter Handling](https://portswigger.net/bappstore/a0c0cd68ab7c4928b3bf0a9ad48ec8c7), allowing for even greater customisation of the `prompts`.
 
 ## Example Use Cases
 
