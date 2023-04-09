@@ -13,7 +13,7 @@ The extension generates an automated security report that summarises potential s
 > While the report is automated, it still requires triaging and post-processing by security professionals, as it may contain false positives.
 
 > [!WARNING]
-> The effectiveness of this extension is heavily reliant on the [quality and precision of the prompts](#prompt-configuration) created by the user for the `GPT` model. This targeted approach will help ensure the `GPT model` generates accurate and valuable results for your security analysis.
+> The effectiveness of this extension is heavily reliant on the [quality and precision of the prompts](#prompt-configuration) created by the user for the selected `GPT` model. This targeted approach will help ensure the `GPT model` generates accurate and valuable results for your security analysis.
 
 ## Features
 
@@ -73,7 +73,7 @@ After configuring the extension with the appropriate `API key`, `model`, and `pr
 - `{RESPONSE}` - The scanned response.
   - `{RESPONSE_HEADERS}` - The headers of the scanned response.
   - `{RESPONSE_BODY}` - The body of the scanned response.
-- `{IS_TRUNCATED_PROMPT}` - A `boolean` value that indicates whether the `prompt` has been truncated to fit within the `1024 character` limit imposed by most `GPT-3.5` models' `maxTokens` value. This value is programmatically set by the extenstion.
+- `{IS_TRUNCATED_PROMPT}` - A `boolean` value that indicates if the `prompt` was truncated to `1024 characters` to fit within the `2048 character` limit imposed by `GPT-3.5 models`. This truncation is necessary for the extension to handle requests and responses within the character limit. The extension sets `{IS_TRUNCATED_PROMPT}` to reflect whether the prompt was truncated.
 
 These `placeholders` can be used in the custom `prompt` to dynamically generate a request/response analysis `prompt` that is specific to the scanned request.
 

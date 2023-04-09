@@ -65,7 +65,9 @@ public class MyScanCheck implements ScanCheck {
         if (gptResponse.getChoices() != null) {
             String escapedPrompt = StringEscapeUtils.escapeHtml4(gptRequest.getPrompt().trim()).replace("\n", "<br />");
             String issueBackground = String.format(
-                    "The following prompt was sent to the OpenAI %s GPT model to generate a response based on the selected HTTP request and response:<br><br>%s",
+                    "The following prompt was sent to the OpenAI <strong>%s</strong> GPT model to generate a response "
+                            +
+                            "based on the selected HTTP request and response:<br><br>%s",
                     gptRequest.getModelId(), escapedPrompt);
 
             String choiceText = gptResponse.getChoices().get(0).getText();
