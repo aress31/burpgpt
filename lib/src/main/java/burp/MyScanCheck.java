@@ -65,17 +65,23 @@ public class MyScanCheck implements ScanCheck {
         if (gptResponse.getChoices() != null) {
             String escapedPrompt = StringEscapeUtils.escapeHtml4(gptRequest.getPrompt().trim()).replace("\n", "<br />");
             String issueBackground = String.format(
-                    "The following prompt was sent to the OpenAI %s GPT model and generate a response" +
-                            "based on the selected HTTP request and response:<br><br>%s",
+                    "The following prompt was sent to the OpenAI %s GPT model to generate a response based on the selected HTTP request and response:<br><br>%s",
                     gptRequest.getModelId(), escapedPrompt);
 
             String choiceText = gptResponse.getChoices().get(0).getText();
-            String issueDetail = StringEscapeUtils.escapeHtml4(choiceText.trim()).replace("\n", "<br />");
+            String escapedDetail = StringEscapeUtils.escapeHtml4(choiceText.trim()).replace("\n", "<br />");
 
-            AuditIssue auditIssue = AuditIssue.auditIssue("GPT-generated vulnerability insights", issueDetail,
-                    null, httpRequestResponse.request().url(), AuditIssueSeverity.INFORMATION,
-                    AuditIssueConfidence.TENTATIVE, issueBackground, null,
-                    null, httpRequestResponse);
+            AuditIssue auditIssue = AuditIssue.auditIssue(
+                    "GPT-generated insights",
+                    escapedDetail,
+                    null,
+                    httpRequestResponse.request().url(),
+                    AuditIssueSeverity.INFORMATION,
+                    AuditIssueConfidence.TENTATIVE,
+                    issueBackground,
+                    null,
+                    null,
+                    httpRequestResponse);
             auditIssues.add(auditIssue);
         }
 
