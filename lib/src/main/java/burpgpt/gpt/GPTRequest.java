@@ -8,9 +8,11 @@ public class GPTRequest {
     @Getter
     private String prompt;
     @Getter
-    private final int maxTokens;
+    private String modelId;
     @Getter
     private final int n;
+    @Getter
+    private final int maxTokens;
     private final String url;
     private final String method;
     private final String requestHeaders;
@@ -18,7 +20,10 @@ public class GPTRequest {
     private final String responseHeaders;
     private final String responseBody;
 
-    public GPTRequest(HttpRequest httpRequest, HttpResponse httpResponse, int n, int maxTokens) {
+    private final String request;
+    private final String response;
+
+    public GPTRequest(HttpRequest httpRequest, HttpResponse httpResponse, String modelId, int n, int maxTokens) {
         this.url = httpRequest.url();
         this.method = httpRequest.method();
         this.requestHeaders = httpRequest.headers().toString();
@@ -26,14 +31,20 @@ public class GPTRequest {
         this.responseHeaders = httpResponse.headers().toString();
         this.responseBody = httpResponse.bodyToString();
 
+        this.request = httpRequest.toString();
+        this.response = httpResponse.toString();
+
+        this.modelId = modelId;
         this.n = n;
         this.maxTokens = maxTokens;
     }
 
     public void setPrompt(String prompt) {
-        String[] placeholders = { "{IS_TRUNCATED_PROMPT}", "{URL}", "{METHOD}", "{REQUEST_HEADERS}", "{REQUEST_BODY}",
+        String[] placeholders = { "{REQUEST}", "{RESPONSE}", "{IS_TRUNCATED_PROMPT}", "{URL}", "{METHOD}",
+                "{REQUEST_HEADERS}", "{REQUEST_BODY}",
                 "{RESPONSE_HEADERS}", "{RESPONSE_BODY}" };
-        String[] replacements = { Boolean.toString(prompt.length() > maxTokens), url, method, requestHeaders,
+        String[] replacements = { request, response, Boolean.toString(prompt.length() > maxTokens), url, method,
+                requestHeaders,
                 requestBody, responseHeaders, responseBody };
 
         for (int i = 0; i < placeholders.length; i++) {

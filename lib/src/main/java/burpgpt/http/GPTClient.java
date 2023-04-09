@@ -3,6 +3,8 @@ package burpgpt.http;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.lang3.tuple.Pair;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -48,7 +50,7 @@ public class GPTClient {
     this.prompt = newPrompt;
   }
 
-  public GPTResponse identifyVulnerabilities(HttpRequestResponse selectedMessage) throws IOException {
+  public Pair<GPTRequest, GPTResponse> identifyVulnerabilities(HttpRequestResponse selectedMessage) throws IOException {
     HttpRequest selectedRequest = selectedMessage.request();
     HttpResponse selectedResponse = selectedMessage.response();
 
@@ -74,8 +76,9 @@ public class GPTClient {
     // and receives a list of potential vulnerabilities in response.
     // TODO: Add a field to specify the maxTokens value
     try {
-      GPTRequest gptRequest = new GPTRequest(selectedRequest, selectedResponse, 1, 1024);
-      return getCompletions(gptRequest, apiKey, modelId, prompt);
+      GPTRequest gptRequest = new GPTRequest(selectedRequest, selectedResponse, modelId, 1, 1024);
+      GPTResponse gptResponse = getCompletions(gptRequest, apiKey, modelId, prompt);
+      return Pair.of(gptRequest, gptResponse);
     } catch (IOException e) {
       throw e;
     }

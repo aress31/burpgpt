@@ -31,6 +31,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.9' 
     implementation 'com.squareup.okhttp3:okhttp:4.9.3'
     implementation 'net.portswigger.burp.extensions:montoya-api:2023.3'
+    implementation 'org.apache.commons:commons-text:1.9'
 
     // Use JUnit Jupiter for testing.
     testImplementation 'net.portswigger.burp.extensions:montoya-api:2023.3'

@@ -17,7 +17,7 @@ import lombok.Getter;
 public class MyBurpExtension implements BurpExtension, PropertyChangeListener {
 
     public static final String EXTENSION = "BurpGPT";
-    public static final Boolean DEBUG = false;
+    public static final Boolean DEBUG = true;
 
     private PropertyChangeSupport propertyChangeSupport;
     @Getter
@@ -30,23 +30,15 @@ public class MyBurpExtension implements BurpExtension, PropertyChangeListener {
     @Getter
     private String modelId = modelIds.get(0);
     @Getter
-    private String prompt = "Analyze the following HTTP request and response for potential vulnerabilities, "
-            + "including but not limited to OWASP top 10 vulnerabilities,such as SQL injection, XSS, CSRF, and more. "
-            + "Other common web application security threats should also be considered.\n"
-            + "Is Truncated Prompt: {IS_TRUNCATED_PROMPT}\n"
-            + "The request was made using the following information:\n"
-            + "URL: {URL}\n"
-            + "Request Method: {METHOD}\n"
-            + "Request Headers: {REQUEST_HEADERS}\n"
-            + "Request Body: {REQUEST_BODY}\n"
-            + "The response contains the following information:\n"
-            + "Response Headers: {RESPONSE_HEADERS}\n"
-            + "Response Body: {RESPONSE_BODY}\n"
-            + "Please describe any identified vulnerabilities and explain how they could be exploited.\n"
-            + "Each vulnerability should be formatted as follows:\n"
-            + "- Vulnerability Name: Brief description of vulnerability\n"
-            + "For example:\n"
-            + "- SQL Injection: The application is vulnerable to SQL injection attacks due to unsanitized user input in the search form.";;
+    String prompt = "Please analyze the following HTTP request and response for potential security vulnerabilities, "
+            + "specifically focusing on OWASP top 10 vulnerabilities such as SQL injection, XSS, CSRF, and other common web application security threats.\n\n"
+            + "Format your response as a bullet list with each point listing a vulnerability name and a brief description, in the format:\n"
+            + "- Vulnerability Name: Brief description of vulnerability\n\n"
+            + "Exclude irrelevant information.\n\n"
+            + "=== Request ===\n"
+            + "{REQUEST}\n\n"
+            + "=== Response ===\n"
+            + "{RESPONSE}\n";
 
     private GPTClient gptClient;
 

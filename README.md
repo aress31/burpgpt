@@ -65,6 +65,8 @@ After configuring the extension with the appropriate `API key`, `model`, and `pr
 
 `burpgpt` allows users to customise the `prompt` for traffic-based analysis by using a system of `placeholders`. We recommend including the maximum relevant information in the prompt. The following `placeholders` are directly handled by the extension and can be used to dynamically insert specific values into the prompt:
 
+- `{REQUEST}` - The scanned request.
+- `{RESPONSE}` - The scanned response.
 - `{IS_TRUNCATED_PROMPT}` - A `boolean` value that indicates whether the `prompt` has been truncated to fit within the `1024 character` limit imposed by most `GPT-3.5` models' `maxTokens` value. This value is programmatically set by the extenstion.
 - `{URL}` - The URL of the scanned request.
 - `{METHOD}` - The HTTP request method used in the scanned request.
