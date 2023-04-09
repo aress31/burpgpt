@@ -26,7 +26,7 @@ public class MyBurpExtension implements BurpExtension, PropertyChangeListener {
     @Getter
     private String apiKey = "PLEASE_CHANGE_ME_OR_YOU_WILL_MAKE_THE_DEVELOPER_SAD";
     @Getter
-    List<String> modelIds = Arrays.asList("davinci", "curie", "babbage");
+    List<String> modelIds = Arrays.asList("davinci", "ada", "babbage", "curie");
     @Getter
     private String modelId = modelIds.get(0);
     @Getter
