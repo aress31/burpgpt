@@ -17,13 +17,13 @@ The extension generates an automated security report that summarises potential s
 
 ## Features
 
-- Provides an additional passive scan check, enabling users to submit `HTTP` request and response data to an `OpenAI`-controlled `GPT` `model` for security analysis, through the use of a placeholder system.
+- Adds a `passive scan check`, allowing users to submit `HTTP` data to an `OpenAI`-controlled `GPT model` for analysis through a `placeholder` system.
+- Leverages the power of `OpenAI's GPT models` to conduct comprehensive traffic analysis, enabling detection of various issues beyond just security vulnerabilities in scanned applications.
+- Enables granular control over the number of `GPT tokens` used in the analysis by allowing for precise adjustments of the `maximum prompt length`.
+- Offers users multiple `OpenAI models` to choose from, allowing them to select the one that best suits their needs.
 - Empowers users to customise `prompts` and unleash limitless possibilities for interacting with `OpenAI models`. Browse through the [Example Use Cases](#example-use-cases) for inspiration.
-- Leverages the power of `OpenAI's GPT models` to detect potential security vulnerabilities in the scanned application.
-- Allows the user to select the most suitable `OpenAI` `model` from the available options.
-- Offers easy `API key` rotation to provide greater control over billing and usage.
-- Enables precise adjustments of the `max prompt length` for flexibility and ease of customisation for both large and small `prompts`.
-- Integrates seamlessly with `Burp Suite`, allowing for easy and transparent use once configured. It also displays the analysis results directly within the `Burp UI`, enabling efficient post-processing of the scan results.
+- Integrates with `Burp Suite`, providing all native features for pre- and post-processing, including displaying analysis results directly within the Burp UI for efficient analysis.
+- Provides troubleshooting functionality via the native `Burp Event Log`, enabling users to quickly resolve communication issues with the `OpenAI API`.
 
 ## Installation
 
@@ -67,16 +67,16 @@ Once configured as outlined above, the `Burp passive scanner` sends each request
 
 `burpgpt` enables users to tailor the `prompt` for traffic analysis using a `placeholder` system. To include relevant information, we recommend using these `placeholders`, which the extension handles directly, allowing dynamic insertion of specific values into the `prompt`:
 
-| Placeholder | Description |
-|-------------|-------------|
-| `{REQUEST}` | The scanned request. |
-| `{URL}` | The URL of the scanned request. |
-| `{METHOD}` | The HTTP request method used in the scanned request. |
-| `{REQUEST_HEADERS}` | The headers of the scanned request. |
-| `{REQUEST_BODY}` | The body of the scanned request. |
-| `{RESPONSE}` | The scanned response. |
-| `{RESPONSE_HEADERS}` | The headers of the scanned response. |
-| `{RESPONSE_BODY}` | The body of the scanned response. |
+| Placeholder             | Description                                                                                                                                                                |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `{REQUEST}`             | The scanned request.                                                                                                                                                       |
+| `{URL}`                 | The URL of the scanned request.                                                                                                                                            |
+| `{METHOD}`              | The HTTP request method used in the scanned request.                                                                                                                       |
+| `{REQUEST_HEADERS}`     | The headers of the scanned request.                                                                                                                                        |
+| `{REQUEST_BODY}`        | The body of the scanned request.                                                                                                                                           |
+| `{RESPONSE}`            | The scanned response.                                                                                                                                                      |
+| `{RESPONSE_HEADERS}`    | The headers of the scanned response.                                                                                                                                       |
+| `{RESPONSE_BODY}`       | The body of the scanned response.                                                                                                                                          |
 | `{IS_TRUNCATED_PROMPT}` | A `boolean` value that is programmatically set to `true` or `false` to indicate whether the `prompt` was truncated to the `Maximum Prompt Size` defined in the `Settings`. |
 
 These `placeholders` can be used in the custom `prompt` to dynamically generate a request/response analysis `prompt` that is specific to the scanned request.
