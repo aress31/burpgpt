@@ -1,6 +1,7 @@
 package burpgpt.http;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -33,7 +34,11 @@ public class GPTClient {
     this.modelId = modelId;
     this.prompt = prompt;
     this.logging = logging;
-    client = new OkHttpClient();
+    client = new OkHttpClient.Builder()
+        .connectTimeout(60, TimeUnit.SECONDS)
+        .readTimeout(60, TimeUnit.SECONDS)
+        .writeTimeout(60, TimeUnit.SECONDS)
+        .build();
     gson = new Gson();
   }
 
@@ -67,8 +72,9 @@ public class GPTClient {
 
     // This code sends the selected request/response information to ChatGPT
     // and receives a list of potential vulnerabilities in response.
+    // TODO: Add a field to specify the maxTokens value
     try {
-      GPTRequest gptRequest = new GPTRequest(selectedRequest, selectedResponse, 1, 2048);
+      GPTRequest gptRequest = new GPTRequest(selectedRequest, selectedResponse, 1, 1024);
       return getCompletions(gptRequest, apiKey, modelId, prompt);
     } catch (IOException e) {
       throw e;
