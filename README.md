@@ -55,7 +55,7 @@ To start using `burpgpt`, the user must first complete the following steps in th
 2. select or modify a `model`,
 3. and adjust or [create custom prompts](#2-prompt-configuration) as desired.
 
-After configuring the extension with the appropriate `API key`, `model`, and `prompt`, all passively scanned items will be analysed by the selected `OpenAI` `model` based on the configured settings. The results of the analysis will be displayed on a per-endpoint basis as an `Informational`-level finding.
+After configuring the extension with the appropriate `API key`, `model`, and `prompt`, all passively scanned items will be analysed by the selected `OpenAI model` based on the configured settings. The results of the analysis will be displayed on a per-endpoint basis as an `Informational`-level finding.
 
 ## Prompt Configuration
 
@@ -71,7 +71,7 @@ After configuring the extension with the appropriate `API key`, `model`, and `pr
 
 These `placeholders` can be used in the custom `prompt` to dynamically generate a request/response analysis `prompt` that is specific to the scanned request.
 
-> [!NOTE] > `Burp Suite` provides the capability to support arbitrary `placeholders` through the use of [Session handling rules](https://portswigger.net/support/configuring-burp-suites-session-handling-rules) or extensions such as [Custom Parameter Handling](https://portswigger.net/bappstore/a0c0cd68ab7c4928b3bf0a9ad48ec8c7), allowing for even greater customisation of the `prompts`.
+> [!NOTE] > `Burp Suite` provides the capability to support arbitrary `placeholders` through the use of [Session handling rules](https://portswigger.net/support/configuring-burp-suites-session-handling-rules) or extensions such as [Custom Parameter Handler](https://portswigger.net/bappstore/a0c0cd68ab7c4928b3bf0a9ad48ec8c7), allowing for even greater customisation of the `prompts`.
 
 ## Example Use Cases
 
