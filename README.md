@@ -59,6 +59,8 @@ To start using `burpgpt`, the user must first complete the following steps in th
 
 After configuring the extension with the appropriate `API key`, `model`, and `prompt`, all passively scanned items will be analysed by the selected `OpenAI model` based on the configured settings. The results of the analysis will be displayed on a per-endpoint basis as an `Informational`-level finding.
 
+<img src="https://user-images.githubusercontent.com/11601622/230777816-9f4c1e16-646f-4581-935f-e341f1323493.jpg" alt="burpgpt finding" width="75%" height="75%">
+
 ## Prompt Configuration
 
 `burpgpt` allows users to customise the `prompt` for traffic-based analysis by using a system of `placeholders`. We recommend including the maximum relevant information in the prompt. The following `placeholders` are directly handled by the extension and can be used to dynamically insert specific values into the prompt:
