@@ -55,6 +55,8 @@ To start using `burpgpt`, the user must first complete the following steps in th
 2. select or modify a `model`,
 3. and adjust or [create custom prompts](#2-prompt-configuration) as desired.
 
+<img src="https://user-images.githubusercontent.com/11601622/230774262-9e7008ac-68e2-49a8-9c41-7aa1139198a3.png" alt="burpgpt UI" width="50%" height="50%">
+
 After configuring the extension with the appropriate `API key`, `model`, and `prompt`, all passively scanned items will be analysed by the selected `OpenAI model` based on the configured settings. The results of the analysis will be displayed on a per-endpoint basis as an `Informational`-level finding.
 
 ## Prompt Configuration
