@@ -57,11 +57,11 @@ To start using burpgpt, users need to complete the following steps in the Settin
 3. Define the `max prompt size`. This field controls the maximum `prompt` length sent to `OpenAI` to avoid exceeding the `maxTokens` of `GPT` models (typically around `2048` for `GPT-3`).
 4. Adjust or create custom prompts according to your requirements.
 
-<img src="https://user-images.githubusercontent.com/11601622/230774262-9e7008ac-68e2-49a8-9c41-7aa1139198a3.png" alt="burpgpt UI" width="50%" height="50%">
+<img src="https://user-images.githubusercontent.com/11601622/230796140-33a41bb3-f905-44e1-9b5a-88a8b4965c83.png" alt="burpgpt UI" width="50%" height="50%">
 
 Once configured as outlined above, the `Burp passive scanner` sends each request to the chosen `OpenAI model` via the `OpenAI API` for analysis, producing `Informational`-level severity findings based on the results.
 
-<img src="https://user-images.githubusercontent.com/11601622/230777816-9f4c1e16-646f-4581-935f-e341f1323493.jpg" alt="burpgpt finding" width="75%" height="75%">
+<img src="https://user-images.githubusercontent.com/11601622/230796361-2907580f-1993-4cf0-8ac7-f6bae448499d.png" alt="burpgpt finding" width="75%" height="75%">
 
 ## Prompt Configuration
 
