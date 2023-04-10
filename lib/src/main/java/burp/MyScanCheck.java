@@ -69,7 +69,7 @@ public class MyScanCheck implements ScanCheck {
                             + "<ul>"
                             + "<li>Model: %s</li>"
                             + "<li>Maximum prompt size: %s</li>"
-                            + "<li>Prompt<br><br>%s</li>"
+                            + "<li>Prompt:<br><br>%s</li>"
                             + "</ul>",
                     gptRequest.getModel(), gptRequest.getMaxPromptSize(), escapedPrompt);
 
