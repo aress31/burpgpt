@@ -68,7 +68,7 @@ public class MyScanCheck implements ScanCheck {
                     "The OpenAI API generated a response using the following parameters:" + "<br>"
                             + "<ul>"
                             + "<li>Model: %s</li>"
-                            + "<li>Maximum Prompt Size: %s</li>"
+                            + "<li>Maximum prompt size: %s</li>"
                             + "<li>Prompt<br><br>%s</li>"
                             + "</ul>",
                     gptRequest.getModel(), gptRequest.getMaxPromptSize(), escapedPrompt);
