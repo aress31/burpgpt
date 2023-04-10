@@ -47,7 +47,7 @@ public class ControllerDialog extends JDialog {
     }
 
     private void setupDialog() {
-        setTitle(String.format("%s OpenAI API", MyBurpExtension.EXTENSION));
+        setTitle(String.format("%s Settings", MyBurpExtension.EXTENSION));
         setLayout(new BorderLayout());
         setResizable(false);
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
