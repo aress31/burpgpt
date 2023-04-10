@@ -16,12 +16,16 @@ import lombok.Getter;
 
 public class MyBurpExtension implements BurpExtension, PropertyChangeListener {
 
+    public static final Boolean DEBUG = false;
+
     public static final String EXTENSION = "BurpGPT";
-    public static final Boolean DEBUG = true;
+    public static final String VERSION = "0.1";
 
     private PropertyChangeSupport propertyChangeSupport;
     @Getter
     Logging logging;
+    @Getter
+    MontoyaApi montoyaApi;
 
     @Getter
     private String apiKey = "PLEASE_CHANGE_ME_OR_YOU_WILL_MAKE_THE_DEVELOPER_SAD";
@@ -46,6 +50,7 @@ public class MyBurpExtension implements BurpExtension, PropertyChangeListener {
 
     @Override
     public void initialize(MontoyaApi montoyaApi) {
+        this.montoyaApi = montoyaApi;
         this.logging = montoyaApi.logging();
         this.propertyChangeSupport = new PropertyChangeSupport(this);
 
