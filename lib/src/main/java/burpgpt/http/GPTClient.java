@@ -25,16 +25,16 @@ import okio.Buffer;
 public class GPTClient {
 
   private String apiKey;
-  private String modelId;
+  private String model;
   private int maxPromptSize;
   private String prompt;
   private final OkHttpClient client;
   private final Gson gson;
   private Logging logging;
 
-  public GPTClient(String apiKey, String modelId, String prompt, Logging logging) {
+  public GPTClient(String apiKey, String model, String prompt, Logging logging) {
     this.apiKey = apiKey;
-    this.modelId = modelId;
+    this.model = model;
     this.prompt = prompt;
     this.logging = logging;
     client = new OkHttpClient.Builder()
@@ -47,7 +47,7 @@ public class GPTClient {
 
   public void updateSettings(String newApiKey, String newModelId, int newMaxPromptSize, String newPrompt) {
     this.apiKey = newApiKey;
-    this.modelId = newModelId;
+    this.model = newModelId;
     this.maxPromptSize = newMaxPromptSize;
     this.prompt = newPrompt;
   }
@@ -78,15 +78,15 @@ public class GPTClient {
     // and receives a list of potential vulnerabilities in response.
     // TODO: Add a field to specify the maxTokens value
     try {
-      GPTRequest gptRequest = new GPTRequest(selectedRequest, selectedResponse, modelId, 1, maxPromptSize);
-      GPTResponse gptResponse = getCompletions(gptRequest, apiKey, modelId, prompt);
+      GPTRequest gptRequest = new GPTRequest(selectedRequest, selectedResponse, model, 1, maxPromptSize);
+      GPTResponse gptResponse = getCompletions(gptRequest, apiKey, model, prompt);
       return Pair.of(gptRequest, gptResponse);
     } catch (IOException e) {
       throw e;
     }
   }
 
-  private GPTResponse getCompletions(GPTRequest gptRequest, String apiKey, String modelId, String prompt)
+  private GPTResponse getCompletions(GPTRequest gptRequest, String apiKey, String model, String prompt)
       throws IOException {
     gptRequest.setPrompt(prompt);
 
@@ -96,7 +96,7 @@ public class GPTClient {
     jsonObject.addProperty("prompt", gptRequest.getPrompt());
     jsonObject.addProperty("max_tokens", gptRequest.getMaxPromptSize());
     jsonObject.addProperty("n", gptRequest.getN());
-    jsonObject.addProperty("model", modelId);
+    jsonObject.addProperty("model", model);
     String jsonBody = gson.toJson(jsonObject);
 
     RequestBody body = RequestBody.create(jsonBody, JSON);

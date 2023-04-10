@@ -30,7 +30,7 @@ public class SettingsView extends JPanel implements PropertyChangeListener {
     private JSpinner maxPromptSizeField;
     private JTextArea promptField;
 
-    private String modelId;
+    private String model;
 
     public interface OnApplyButtonClickListener {
         void onApplyButtonClick();
@@ -61,7 +61,7 @@ public class SettingsView extends JPanel implements PropertyChangeListener {
     }
 
     private void createApiKeyField(int y) {
-        JLabel apiKeyLabel = new JLabel("API Key:");
+        JLabel apiKeyLabel = new JLabel("API key:");
         apiKeyField = new JTextField(myBurpExtension.getApiKey(), 20);
         add(apiKeyLabel, createGridBagConstraints(0, y));
         add(apiKeyField, createGridBagConstraints(1, y));
@@ -70,14 +70,14 @@ public class SettingsView extends JPanel implements PropertyChangeListener {
     private void createModelIdComboBox(int y) {
         JLabel modelIdLabel = new JLabel("Model:");
         modelIdComboBox = new JComboBox<>(myBurpExtension.getModelIds().toArray(new String[0]));
-        modelIdComboBox.setSelectedItem(myBurpExtension.getModelId());
-        modelIdComboBox.addActionListener(e -> modelId = (String) modelIdComboBox.getSelectedItem());
+        modelIdComboBox.setSelectedItem(myBurpExtension.getModel());
+        modelIdComboBox.addActionListener(e -> model = (String) modelIdComboBox.getSelectedItem());
         add(modelIdLabel, createGridBagConstraints(0, y));
         add(modelIdComboBox, createGridBagConstraints(1, y));
     }
 
     private void createMaxPromptSizeField(int y) {
-        JLabel maxPromptSizeLabel = new JLabel("Maximum Prompt Size:");
+        JLabel maxPromptSizeLabel = new JLabel("Maximum prompt size:");
         maxPromptSizeField = new JSpinner(
                 new SpinnerNumberModel(myBurpExtension.getMaxPromptSize(), 1, Integer.MAX_VALUE, 1));
         add(maxPromptSizeLabel, createGridBagConstraints(0, y));

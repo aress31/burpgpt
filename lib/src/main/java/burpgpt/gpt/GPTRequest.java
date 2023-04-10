@@ -8,7 +8,7 @@ public class GPTRequest {
     @Getter
     private final int n;
     @Getter
-    private String modelId;
+    private String model;
     @Getter
     private final int maxPromptSize;
     @Getter
@@ -23,7 +23,7 @@ public class GPTRequest {
     private final String request;
     private final String response;
 
-    public GPTRequest(HttpRequest httpRequest, HttpResponse httpResponse, String modelId, int n, int maxPromptSize) {
+    public GPTRequest(HttpRequest httpRequest, HttpResponse httpResponse, String model, int n, int maxPromptSize) {
         this.url = httpRequest.url();
         this.method = httpRequest.method();
         this.requestHeaders = httpRequest.headers().toString();
@@ -34,7 +34,7 @@ public class GPTRequest {
         this.request = httpRequest.toString();
         this.response = httpResponse.toString();
 
-        this.modelId = modelId;
+        this.model = model;
         this.n = n;
         this.maxPromptSize = maxPromptSize;
     }

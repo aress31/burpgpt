@@ -71,7 +71,7 @@ public class MyScanCheck implements ScanCheck {
                             + "<li>Maximum Prompt Size: %s</li>"
                             + "<li>Prompt<br><br>%s</li>"
                             + "</ul>",
-                    gptRequest.getModelId(), gptRequest.getMaxPromptSize(), escapedPrompt);
+                    gptRequest.getModel(), gptRequest.getMaxPromptSize(), escapedPrompt);
 
             String choiceText = gptResponse.getChoices().get(0).getText();
             String escapedDetail = StringEscapeUtils.escapeHtml4(choiceText.trim()).replace("\n", "<br />");

@@ -10,7 +10,7 @@ import lombok.Getter;
 @Getter
 public class GPTResponse {
     private List<Choice> choices;
-    private String modelId;
+    private String model;
     private String id;
     @SerializedName("created")
     private long createdTimestamp;
@@ -68,7 +68,7 @@ public class GPTResponse {
     public String toString() {
         return "GPTResponse{" +
                 "choices=" + choices +
-                ", modelId='" + modelId + '\'' +
+                ", model='" + model + '\'' +
                 ", id='" + id + '\'' +
                 ", createdTimestamp=" + createdTimestamp +
                 ", usage=" + usage +
