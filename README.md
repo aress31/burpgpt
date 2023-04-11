@@ -34,7 +34,7 @@ The extension generates an automated security report that summarises potential s
 - Burp Suite Professional or Community Edition: `Version 2023.3.2` or later.
 
   > [!IMPORTANT]
-  > Please note that using any version lower than 2023.3.2 may result in a [java.lang.NoSuchMethodError](https://forum.portswigger.net/thread/montoya-api-nosuchmethoderror-275048be). It is crucial to use the specified version or a more recent one to avoid this issue.
+  > Please note that using any version lower than `2023.3.2` may result in a [java.lang.NoSuchMethodError](https://forum.portswigger.net/thread/montoya-api-nosuchmethoderror-275048be). It is crucial to use the specified version or a more recent one to avoid this issue.
 
 2. Build tool:
 
