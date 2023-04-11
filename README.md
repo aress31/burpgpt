@@ -46,7 +46,7 @@ The extension generates an automated security report that summarises potential s
 
 ### 2. Loading the Extension Into `Burp Suite`
 
-To install `burpgpt` in `Burp Suite`, first go to the `Extendensions` tab and click on the `Add` button. Then, select the `burpgpt-all` jar file located in the `.\lib\build\libs` folder to load the extension.
+To install `burpgpt` in `Burp Suite`, first go to the `Extensions` tab and click on the `Add` button. Then, select the `burpgpt-all` jar file located in the `.\lib\build\libs` folder to load the extension.
 
 # Usage
 
