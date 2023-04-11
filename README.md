@@ -25,6 +25,27 @@ The extension generates an automated security report that summarises potential s
 - Integrates with `Burp Suite`, providing all native features for pre- and post-processing, including displaying analysis results directly within the Burp UI for efficient analysis.
 - Provides troubleshooting functionality via the native `Burp Event Log`, enabling users to quickly resolve communication issues with the `OpenAI API`.
 
+# Requirements:
+
+1. System Requirements:
+
+- Operating System: Compatible with `Linux`, `macOS`, and `Windows` operating systems.
+- Java Development Kit (JDK): `Version 11` or later.
+- Burp Suite Professional or Community Edition: `Version 2023.3.2` or later.
+
+> [!IMPORTANT]
+> Please note that using any version lower than 2023.3.2 may result in a [java.lang.NoSuchMethodError](https://forum.portswigger.net/thread/montoya-api-nosuchmethoderror-275048be). It is crucial to use the specified version or a more recent one to avoid this issue.
+
+2. Build Tool:
+
+- Gradle: `Version 6.9` or later (recommended). The [build.gradle](https://github.com/aress31/burpgpt/blob/main/lib/build.gradle) file is provided in the project repository.
+
+3. Environment Variables:
+
+- Set up the `JAVA_HOME` environment variable to point to the JDK installation directory.
+
+Please ensure that all system requirements, including a compatible version of `Burp Suite`, are met before building and running the project. Note that the project's external dependencies will be automatically managed and installed by `Gradle` during the build process. Adhering to the requirements will help avoid potential issues and reduce the need for opening new issues in the project repository.
+
 ## Installation
 
 ### 1. Compilation
@@ -46,7 +67,7 @@ The extension generates an automated security report that summarises potential s
 
 ### 2. Loading the Extension Into `Burp Suite`
 
-To install `burpgpt` in `Burp Suite`, first go to the `Extendensions` tab and click on the `Add` button. Then, select the `burpgpt-all` jar file located in the `.\lib\build\libs` folder to load the extension.
+To install `burpgpt` in `Burp Suite`, first go to the `Extensions` tab and click on the `Add` button. Then, select the `burpgpt-all` jar file located in the `.\lib\build\libs` folder to load the extension.
 
 # Usage
 
@@ -150,6 +171,7 @@ The following list of example use cases showcases the bespoke and highly customi
 # Roadmap
 
 - [x] Add a new field to the `Settings` panel that allows users to set the `maxTokens` limit for requests, thereby limiting the request size.
+- [ ] Add support for connecting to a local instance of the `AI model`, allowing users to run and interact with the model on their local machines, potentially improving response times and **data privacy**.
 - [ ] Retrieve the precise `maxTokens` value for each `model` to transmit the maximum allowable data and obtain the most extensive `GPT` response possible.
 - [ ] Implement persistent configuration storage to preserve settings across `Burp Suite` restarts.
 - [ ] Enhance the code for accurate parsing of `GPT` responses into the `Vulnerability model` for improved reporting.

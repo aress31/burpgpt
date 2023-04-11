@@ -6,6 +6,15 @@ labels: bug
 assignees: aress31
 ---
 
+# Prerequisites Checklist
+
+Before submitting the issue, please make sure you have:
+
+- Thoroughly read the [README file](https://github.com/aress31/burpgpt/blob/main/README.md).
+- Checked the [project requirements](https://github.com/aress31/burpgpt#requirements) and ensured they are met.
+- Searched for existing issues that may address the problem.
+- Performed basic troubleshooting steps.
+
 # Description
 
 A clear and concise description of what the bug is.
