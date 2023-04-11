@@ -25,7 +25,7 @@ The extension generates an automated security report that summarises potential s
 - Integrates with `Burp Suite`, providing all native features for pre- and post-processing, including displaying analysis results directly within the Burp UI for efficient analysis.
 - Provides troubleshooting functionality via the native `Burp Event Log`, enabling users to quickly resolve communication issues with the `OpenAI API`.
 
-# Requirements:
+## Requirements:
 
 1. System requirements:
 
