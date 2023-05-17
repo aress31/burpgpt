@@ -71,7 +71,7 @@ Please ensure that all system requirements, including a compatible version of `B
 
 To install `burpgpt` in `Burp Suite`, first go to the `Extensions` tab and click on the `Add` button. Then, select the `burpgpt-all` jar file located in the `.\lib\build\libs` folder to load the extension.
 
-# Usage
+## Usage
 
 To start using burpgpt, users need to complete the following steps in the Settings panel, which can be accessed from the Burp Suite menu bar:
 
@@ -86,7 +86,7 @@ Once configured as outlined above, the `Burp passive scanner` sends each request
 
 <img src="https://user-images.githubusercontent.com/11601622/230796361-2907580f-1993-4cf0-8ac7-f6bae448499d.png" alt="burpgpt finding" width="75%" height="75%">
 
-## Prompt Configuration
+### Prompt Configuration
 
 `burpgpt` enables users to tailor the `prompt` for traffic analysis using a `placeholder` system. To include relevant information, we recommend using these `placeholders`, which the extension handles directly, allowing dynamic insertion of specific values into the `prompt`:
 
@@ -106,7 +106,7 @@ These `placeholders` can be used in the custom `prompt` to dynamically generate 
 
 > [!NOTE] > `Burp Suite` provides the capability to support arbitrary `placeholders` through the use of [Session handling rules](https://portswigger.net/support/configuring-burp-suites-session-handling-rules) or extensions such as [Custom Parameter Handler](https://portswigger.net/bappstore/a0c0cd68ab7c4928b3bf0a9ad48ec8c7), allowing for even greater customisation of the `prompts`.
 
-## Example Use Cases
+### Example Use Cases
 
 The following list of example use cases showcases the bespoke and highly customisable nature of `burpgpt`, which enables users to tailor their web traffic analysis to meet their specific needs.
 
@@ -170,7 +170,7 @@ The following list of example use cases showcases the bespoke and highly customi
   Identify any potential vulnerabilities related to the {SPA_FRAMEWORK_NAME} SPA framework in the request and response data and report them.
   ```
 
-# Roadmap
+## Roadmap
 
 - [x] Add a new field to the `Settings` panel that allows users to set the `maxTokens` limit for requests, thereby limiting the request size. <- Exclusive to the [Pro edition of BurpGPT](https://burpgpt.app).
 - [x] Add support for connecting to a local instance of the `AI model`, allowing users to run and interact with the model on their local machines, potentially improving response times and **data privacy**. <- Exclusive to the [Pro edition of BurpGPT](https://burpgpt.app).
