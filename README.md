@@ -173,7 +173,7 @@ The following list of example use cases showcases the bespoke and highly customi
 # Roadmap
 
 - [x] Add a new field to the `Settings` panel that allows users to set the `maxTokens` limit for requests, thereby limiting the request size. <- Exclusive to the [Pro edition of BurpGPT](https://burpgpt.app).
-- [ ] Add support for connecting to a local instance of the `AI model`, allowing users to run and interact with the model on their local machines, potentially improving response times and **data privacy**. <- Exclusive to the [Pro edition of BurpGPT](https://burpgpt.app).
+- [x] Add support for connecting to a local instance of the `AI model`, allowing users to run and interact with the model on their local machines, potentially improving response times and **data privacy**. <- Exclusive to the [Pro edition of BurpGPT](https://burpgpt.app).
 - [ ] Retrieve the precise `maxTokens` value for each `model` to transmit the maximum allowable data and obtain the most extensive `GPT` response possible.
 - [x] Implement persistent configuration storage to preserve settings across `Burp Suite` restarts. <- Exclusive to the [Pro edition of BurpGPT](https://burpgpt.app).
 - [x] Enhance the code for accurate parsing of `GPT` responses into the `Vulnerability model` for improved reporting. <- Exclusive to the [Pro edition of BurpGPT](https://burpgpt.app).
