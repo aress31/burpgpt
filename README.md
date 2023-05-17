@@ -29,7 +29,7 @@ The extension generates an automated security report that summarises potential s
 
 ## Requirements
 
-1. System requirements:
+### 1. System requirements
 
 - Operating System: Compatible with `Linux`, `macOS`, and `Windows` operating systems.
 - Java Development Kit (JDK): `Version 11` or later.
@@ -38,13 +38,13 @@ The extension generates an automated security report that summarises potential s
   > [!IMPORTANT]
   > Please note that using any version lower than `2023.3.2` may result in a [java.lang.NoSuchMethodError](https://forum.portswigger.net/thread/montoya-api-nosuchmethoderror-275048be). It is crucial to use the specified version or a more recent one to avoid this issue.
 
-2. Build tool:
+### 2. Build tool
 
 - Gradle: `Version 6.9` or later (recommended). The [build.gradle](https://github.com/aress31/burpgpt/blob/main/lib/build.gradle) file is provided in the project repository.
 
-3. Environment variables:
+### 3. Environment variables
 
-- Set up the `JAVA_HOME` environment variable to point to the JDK installation directory.
+- Set up the `JAVA_HOME` environment variable to point to the `JDK` installation directory.
 
 Please ensure that all system requirements, including a compatible version of `Burp Suite`, are met before building and running the project. Note that the project's external dependencies will be automatically managed and installed by `Gradle` during the build process. Adhering to the requirements will help avoid potential issues and reduce the need for opening new issues in the project repository.
 
