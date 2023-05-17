@@ -1,4 +1,4 @@
-[!UPDATE] Announcing the launch of BurpGPT Pro, the edition specifically tailored to meet the needs of professionals and cyber boutiques. Discover a host of powerful features and a user-friendly interface that enhances your capabilities and ensures an optimal user experience. To access these benefits, visit www.burpgpt.app. **Please note that the Pro edition will receive exclusive updates for new features, bug fixes, and improvements, as the creator will no longer maintain this repository.**
+[!UPDATE] Announcing the launch of BurpGPT Pro, the edition specifically tailored to meet the needs of professionals and cyber boutiques. Discover a host of powerful features and a user-friendly interface that enhances your capabilities and ensures an optimal user experience. To access these benefits, visit https://burpgpt.app. **Please note that the Pro edition will receive exclusive updates for new features, bug fixes, and improvements, as the creator will no longer maintain this repository.**
 
 # burpgpt
 
