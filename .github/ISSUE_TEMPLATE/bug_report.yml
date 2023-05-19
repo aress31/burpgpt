@@ -10,13 +10,13 @@ body:
       description: "Prior to submitting the issue, ensure that you have:"
       options:
         - label: Thoroughly read the [README file](https://github.com/aress31/burpgpt/blob/main/README.md).
-        required: true
+          required: true
         - label: Checked the [project requirements](https://github.com/aress31/burpgpt#requirements) and ensured they are met.
-        required: true
+          required: true
         - label: Searched for existing issues that may address the problem.
-        required: true
+          required: true
         - label: Performed basic troubleshooting steps.
-        required: true
+          required: true
   - type: textarea
     attributes:
       label: Description

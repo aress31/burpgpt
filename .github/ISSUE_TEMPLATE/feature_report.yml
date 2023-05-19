@@ -10,7 +10,7 @@ body:
       description: "Prior to submitting the issue, ensure that you have:"
       options:
         - label: Searched for existing feature requests that may address the problem.
-        required: true
+          required: true
   - type: textarea
     attributes:
       label: Problem or Use Case
