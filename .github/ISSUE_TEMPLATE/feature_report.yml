@@ -32,7 +32,7 @@ body:
   - type: textarea
     attributes:
       label: Example
-      description:If applicable, provide an example of how the feature would work by leveraging GPT models to identify vulnerabilities in HTTP request/response pairs. You can include a sample request/response pair and a prompt that would be sent to the GPT model to identify vulnerabilities.
+      description: If applicable, provide an example of how the feature would work by leveraging GPT models to identify vulnerabilities in HTTP request/response pairs. You can include a sample request/response pair and a prompt that would be sent to the GPT model to identify vulnerabilities.
     validations:
       required: true
   - type: textarea
