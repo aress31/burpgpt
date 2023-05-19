@@ -1,5 +1,5 @@
-name: Report a bug
-description: Report an issue to help us enhance the project.
+name: 🐛 Report a bug
+description: Submit a bug report to help us enhance burpgpt.
 title: "[BUG] <title>"
 labels: [bug]
 assignees: aress31
