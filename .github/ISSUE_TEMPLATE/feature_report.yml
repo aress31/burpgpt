@@ -8,34 +8,34 @@ body:
   attributes:
     label: "Before submitting the feature request, please make sure you have:"
     options:
-    - label: Searched for existing feature requests that may address the problem.
+      - label: Searched for existing feature requests that may address the problem.
       required: true
-  - type: textarea
-    attributes:
-      label: Problem or Use Case
-      description: A clear and concise description of the problem or use case where GPT-based vulnerability identification would be useful.
-    validations:
-      required: true
-  - type: textarea
-    attributes:
-      label: Proposed Solution
-      description: A clear and concise description of what you want to happen. Please provide as much detail as possible, including how the feature would interact with GPT models and Burp Suite.
-    validations:
-      required: true
-  - type: textarea
-    attributes:
-      label: Alternative Solutions Considered
-      description: A clear and concise description of any alternative solutions or features you've considered.
-    validations:
-      required: true
-  - type: textarea
-    attributes:
-      label: Example
-      description:If applicable, provide an example of how the feature would work by leveraging GPT models to identify vulnerabilities in HTTP request/response pairs. You can include a sample request/response pair and a prompt that would be sent to the GPT model to identify vulnerabilities.
-    validations:
-      required: true
-  - type: textarea
-    attributes:
-      label: Add any other context, screenshots, or references about the feature request here.
-    validations:
-      required: true
+- type: textarea
+  attributes:
+    label: Problem or Use Case
+    description: A clear and concise description of the problem or use case where GPT-based vulnerability identification would be useful.
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Proposed Solution
+    description: A clear and concise description of what you want to happen. Please provide as much detail as possible, including how the feature would interact with GPT models and Burp Suite.
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Alternative Solutions Considered
+    description: A clear and concise description of any alternative solutions or features you've considered.
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Example
+    description:If applicable, provide an example of how the feature would work by leveraging GPT models to identify vulnerabilities in HTTP request/response pairs. You can include a sample request/response pair and a prompt that would be sent to the GPT model to identify vulnerabilities.
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Add any other context, screenshots, or references about the feature request here.
+  validations:
+    required: true
