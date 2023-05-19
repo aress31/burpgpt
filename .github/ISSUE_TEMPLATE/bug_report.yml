@@ -4,70 +4,70 @@ title: "[BUG] <title>"
 labels: [bug]
 assignees: aress31
 body:
-- type: checkboxes
-  attributes:
-    label: "Before submitting the issue, please make sure you have:"
-    options:
-    - label: Thoroughly read the [README file](https://github.com/aress31/burpgpt/blob/main/README.md).
+  - type: checkboxes
+    attributes:
+      label: "Before submitting the issue, please make sure you have:"
+      options:
+        - label: Thoroughly read the [README file](https://github.com/aress31/burpgpt/blob/main/README.md).
+          required: true
+        - label: Checked the [project requirements](https://github.com/aress31/burpgpt#requirements) and ensured they are met.
+          required: true
+        - label: Searched for existing issues that may address the problem.
+          required: true
+        - label: Performed basic troubleshooting steps.
+          required: true
+  - type: textarea
+    attributes:
+      label: Description
+      description: A clear and concise description of what the bug is.
+    validations:
       required: true
-    - label: Checked the [project requirements](https://github.com/aress31/burpgpt#requirements) and ensured they are met.
+  - type: textarea
+    attributes:
+      label: Steps to Reproduce
+      placeholder: |
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See error...
+      description: Steps to reproduce the behavior.
+    validations:
       required: true
-    - label: Searched for existing issues that may address the problem.
+  - type: textarea
+    attributes:
+      label: Expected Behavior
+      description: A clear and concise description of what you expected to happen.
+    validations:
       required: true
-    - label: Performed basic troubleshooting steps.
+  - type: textarea
+    attributes:
+      label: Screenshots
+      description: If applicable, add screenshots to help explain your problem.
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Environment
+      value: |
+        - OS: [e.g. Windows, macOS, Linux]
+        - Java version: [e.g. 8, 11, 16]
+        - Burp Suite version: [e.g. Professional 2021.4, Community 2021.4]
+        - GPT model used: [e.g. GPT-3, GPT-Neo, GPT-2]
+        - Maximum tokens used: [e.g. 2048]
+        - Prompt used: [e.g. "Analyze the following HTTP request and response for potential vulnerabilities..."]
+    validations:
       required: true
-- type: textarea
-  attributes:
-    label: Description
-    description: A clear and concise description of what the bug is.
-  validations:
-    required: true
-- type: textarea
-  attributes:
-    label: Steps to Reproduce
-    placeholder: |
-      1. Go to '...'
-      2. Click on '....'
-      3. Scroll down to '....'
-      4. See error...
-    description: Steps to reproduce the behavior.
-  validations:
-    required: true
-- type: textarea
-  attributes:
-    label: Expected Behavior
-    description: A clear and concise description of what you expected to happen.
-  validations:
-    required: true
-- type: textarea
-  attributes:
-    label: Screenshots
-    description: If applicable, add screenshots to help explain your problem.
-  validations:
-    required: false
-- type: textarea
-  attributes:
-    label: Environment
-    value: |
-    - OS: [e.g. Windows, macOS, Linux]
-    - Java version: [e.g. 8, 11, 16]
-    - Burp Suite version: [e.g. Professional 2021.4, Community 2021.4]
-    - GPT model used: [e.g. GPT-3, GPT-Neo, GPT-2]
-    - Maximum tokens used: [e.g. 2048]
-    - Prompt used: [e.g. "Analyze the following HTTP request and response for potential vulnerabilities..."]
-  validations:
-    required: true
-- type: textarea
-  attributes:
-    label: Error Message
-    description: |
-      1. Navigate to the `Dashboard` -> `Event Log` to see if there are any relevant error messages available.
-      2. Additionally, go to `Extensions` -> `Installed` -> `BurpGPT`, and check the `Output` and `Error` tabs for any error messages.
-  validations:
-    required: false
-- type: textarea
-  attributes:
-    label: Additional Context
-    description: Add any other context about the problem here.
-  validations:
-    required: false
+  - type: textarea
+    attributes:
+      label: Error Message
+      description: |
+        1. Navigate to the `Dashboard` -> `Event Log` to see if there are any relevant error messages available.
+        2. Additionally, go to `Extensions` -> `Installed` -> `BurpGPT`, and check the `Output` and `Error` tabs for any error messages.
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Additional Context
+      description: Add any other context about the problem here.
+    validations:
+      required: false
