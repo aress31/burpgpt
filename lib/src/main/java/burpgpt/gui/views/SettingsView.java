@@ -1,5 +1,6 @@
 package burpgpt.gui.views;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -105,7 +106,8 @@ public class SettingsView extends JPanel implements PropertyChangeListener {
         JButton applyButton = new JButton("Apply");
         applyButton.addActionListener(e -> applySettings());
         applyButton.setBackground(UIManager.getColor("Burp.burpOrange"));
-        applyButton.setFont(new Font(applyButton.getFont().getName(), Font.BOLD, applyButton.getFont().getSize()));
+        applyButton.setForeground(Color.WHITE);
+        applyButton.setFont(applyButton.getFont().deriveFont(Font.BOLD));
         add(applyButton, createGridBagConstraints(1, y));
     }
 

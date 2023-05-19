@@ -19,7 +19,7 @@ public class MyBurpExtension implements BurpExtension, PropertyChangeListener {
     public static final Boolean DEBUG = false;
 
     public static final String EXTENSION = "BurpGPT";
-    public static final String VERSION = "0.1";
+    public static final String VERSION = "0.1.1";
 
     private PropertyChangeSupport propertyChangeSupport;
     @Getter

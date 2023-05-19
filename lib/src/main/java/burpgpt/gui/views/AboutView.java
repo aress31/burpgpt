@@ -1,17 +1,26 @@
 package burpgpt.gui.views;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.text.MessageFormat;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Calendar;
 
 import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.LayoutStyle;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.ToolTipManager;
+import javax.swing.UIManager;
 
 import burp.MyBurpExtension;
 import burpgpt.utilities.HtmlResourceLoader;
@@ -19,23 +28,42 @@ import burpgpt.utilities.HtmlResourceLoader;
 public class AboutView extends JPanel {
 
     private static final int COPYRIGHT_FONT_SIZE = 12;
+    private static final String WEBSITE = "https://burpgpt.app/#pricing";
 
     public AboutView() {
-        setLayout(new BorderLayout());
-        setBorder(BorderFactory.createEmptyBorder(16, 16, 16, 16)); // add 16-pixel padding to the root panel
-        add(initComponents(), BorderLayout.WEST);
+        setLayout(new GroupLayout(this));
+        setBorder(BorderFactory.createEmptyBorder(16, 16, 16, 16));
+        initComponents();
+        enableTooltips();
     }
 
-    private JPanel initComponents() {
-        JPanel contentPanel = new JPanel();
-        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.PAGE_AXIS));
+    public void initComponents() {
+        JLabel titleLabel = createTitleLabel();
+        JLabel copyRightLabel = createCopyRightLabel();
+        JLabel descriptionLabel = createDescriptionLabel();
+        JScrollPane descriptionScrollPane = new JScrollPane(descriptionLabel);
+        descriptionScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+        descriptionScrollPane.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
+        descriptionScrollPane.setBorder(BorderFactory.createEmptyBorder());
+        JButton upgradeButton = createUpgradeButton();
 
-        contentPanel.add(createTitleLabel());
-        contentPanel.add(createCopyRightLabel());
-        contentPanel.add(Box.createRigidArea(new Dimension(0, 16)));
-        contentPanel.add(createDescriptionLabel());
+        GroupLayout layout = (GroupLayout) getLayout();
 
-        return contentPanel;
+        GroupLayout.Group horizontalGroup = layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                .addComponent(titleLabel)
+                .addComponent(copyRightLabel)
+                .addComponent(descriptionScrollPane)
+                .addComponent(upgradeButton);
+        layout.setHorizontalGroup(horizontalGroup);
+
+        GroupLayout.Group verticalGroup = layout.createSequentialGroup()
+                .addComponent(titleLabel)
+                .addComponent(copyRightLabel)
+                .addGap(16)
+                .addComponent(descriptionScrollPane)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(upgradeButton);
+        layout.setVerticalGroup(verticalGroup);
     }
 
     private JLabel createTitleLabel() {
@@ -44,16 +72,6 @@ public class AboutView extends JPanel {
         JLabel titleLabel = new JLabel(title);
         titleLabel.putClientProperty("html.disable", null);
         return titleLabel;
-    }
-
-    private JLabel createDescriptionLabel() {
-        String description = HtmlResourceLoader.loadHtmlContent("aboutDescription.html");
-        String formattedDescription = MessageFormat.format(description, MyBurpExtension.EXTENSION);
-        // HACK: Need to get the width programatically
-        JLabel descriptionLabel = new JLabel("<html><div id='descriptionDiv' style='width: 800px;'>"
-                + formattedDescription + "</div></html>");
-        descriptionLabel.putClientProperty("html.disable", null);
-        return descriptionLabel;
     }
 
     private JLabel createCopyRightLabel() {
@@ -66,5 +84,35 @@ public class AboutView extends JPanel {
         copyRightLabel.setForeground(Color.GRAY);
         copyRightLabel.putClientProperty("html.disable", null);
         return copyRightLabel;
+    }
+
+    private JLabel createDescriptionLabel() {
+        String description = HtmlResourceLoader.loadHtmlContent("aboutDescription.html");
+        JLabel descriptionLabel = new JLabel(description);
+        descriptionLabel.putClientProperty("html.disable", null);
+        return descriptionLabel;
+    }
+
+    private JButton createUpgradeButton() {
+        JButton upgradeButton = new JButton("Upgrade to the Pro edition");
+        upgradeButton.setToolTipText("Upgrade to the Pro edition by visiting our official website");
+        upgradeButton.setBackground(UIManager.getColor("Burp.burpOrange"));
+        upgradeButton.setForeground(Color.WHITE);
+        upgradeButton.setFont(upgradeButton.getFont().deriveFont(Font.BOLD));
+        upgradeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Desktop.getDesktop().browse(new URI(WEBSITE));
+                } catch (IOException | URISyntaxException e1) {
+                    // pass
+                }
+            }
+        });
+        return upgradeButton;
+    }
+
+    private void enableTooltips() {
+        ToolTipManager.sharedInstance().setInitialDelay(0);
     }
 }
