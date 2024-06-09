@@ -1,4 +1,8 @@
-[!UPDATE] Announcing the launch of BurpGPT Pro, the edition specifically tailored to meet the needs of professionals and cyber boutiques. Discover a host of powerful features and a user-friendly interface that enhances your capabilities and ensures an optimal user experience. To access these benefits, visit https://burpgpt.app. **Please note that the Pro edition will receive exclusive updates for new features, bug fixes, and improvements, as the creator will no longer maintain this repository.**
+> [!IMPORTANT]
+> Announcing the launch of [BurpGPT Pro](https://burpgpt.app/), the edition specifically tailored to meet the needs of professionals and cyber boutiques. Discover a host of powerful features and a user-friendly interface that enhances your capabilities and ensures an optimal user experience.  To access these benefits, visit our [website](https://burpgpt.app/) and read the [documentation](https://docs.burpgpt.app/) for more information.
+
+> [!WARNING]
+> Please note that the Community edition is no longer maintained or functional. To continue receiving updates, new features, bug fixes, and improvements, consider upgrading to the [Pro edition](https://burpgpt.app/). **It is no longer useful to log `Issues` for the Community edition.**
 
 # burpgpt
 
