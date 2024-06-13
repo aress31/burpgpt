@@ -68,6 +68,7 @@ Please ensure that all system requirements, including a compatible version of `B
 3. Build the standalone `jar`:
 
    ```bash
+   chmod +x ./gradlew
    ./gradlew shadowJar
    ```
 
